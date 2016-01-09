@@ -3,7 +3,7 @@ layout: post
 title: On immutability and builders in java
 ---
 
-Immutable object with builders in java are a nice solution but can be tricky when there are mandatory and optional attributes. I've elaborated a solution based on chained interfaces that can be implemented easily, and possibly automated. Skip to the [implementation](#Implementation-mandatory-attributes) part to see the code.
+Immutable object with builders in java are a nice solution but can be tricky when there are mandatory and optional attributes. I've elaborated a solution based on chained interfaces that can be implemented easily, and possibly automated. Skip to the [implementation](#implementation-with-mandatory-attributes) part to see the code.
 
 # Situation
 
@@ -24,7 +24,7 @@ The builder pattern, however, lets the user partially fill the attributes' list,
 
 Let's see what can we do.
 
-## Implementation: classic
+## Classic implementation
 
 The following is an implementation of a classic immutable class with a builder.
 
@@ -101,7 +101,7 @@ public ClassicImmutable build(){
 
 Can we instead force the user to give at least the mandatory parts, while letting it skip the others? Can we do this with compile time checks?
 
-## Implementation: mandatory attributes
+## Implementation with mandatory attributes
 
 In the following code, we see how we can force the mandatory parts in the builder:
 
