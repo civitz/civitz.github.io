@@ -59,7 +59,7 @@ highlighter: pygments
 permalink: /:title/
 
 redcarpet:
-    extensions: [with_toc_data]
+  extensions: [with_toc_data]
 
 # The release of Jekyll Now that you're using
 version: v1.1.0
