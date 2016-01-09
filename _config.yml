@@ -62,6 +62,7 @@ permalink: /:title/
 kramdown:
   auto_ids: true
   input: GFM
+  syntax_highlighter: rouge
 
 # The release of Jekyll Now that you're using
 version: v1.1.0
