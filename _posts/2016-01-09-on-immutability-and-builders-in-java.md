@@ -224,7 +224,7 @@ You can find an unpolished version of this code at [this github repo](https://gi
 
 # [EDIT: 2016-11-30] 
 
-Apparently immutables.io have already issued the problem with and provided [the same solution](https://immutables.github.io/immutable.html#staged-builder) with an handy annotation! Yay immutables!
+Apparently immutables.io have already issued the problem and provided [the same solution](https://immutables.github.io/immutable.html#staged-builder) with an handy annotation! Yay immutables!
 
 # Footnotes
 
