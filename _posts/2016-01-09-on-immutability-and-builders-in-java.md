@@ -222,6 +222,10 @@ The only hassle is creating the interface chain, but that can be automated (e.g.
 
 You can find an unpolished version of this code at [this github repo](https://github.com/civitz/java-experiments/tree/master/src/main/java/io/github/civitz/java/experiments/immutables).
 
+# [EDIT: 2016-11-30] 
+
+Apparently immutables.io have already issued the problem with and provided [the same solution](https://immutables.github.io/immutable.html#staged-builder) with an handy annotation! Yay immutables!
+
 # Footnotes
 
 <b id="f1">1</b>The order is a side effect of the interface chain, but can be exploited to force a particular ordering. [↩](#a1).
