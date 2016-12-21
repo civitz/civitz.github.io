@@ -1,3 +1,7 @@
+---
+layout: post
+title: The boy scout rule
+---
 # Recognizing bad code
 
 As Venkat Subramaniam says in [this great talk](https://www.youtube.com/watch?v=llGgO74uXMI):
