@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The boy scout rule
+title: Recognizing bad code
 ---
 # Recognizing bad code
 
