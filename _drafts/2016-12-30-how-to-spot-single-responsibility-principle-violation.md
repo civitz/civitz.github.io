@@ -11,5 +11,7 @@ I think there's a single question you can ask yourself about a piece of code to 
 
 > If you describe what a piece of code does with an "AND", it's probably violating the SRP
 
-E.g. if you say "this method makes an http request and parses its output to a bean" then the method shall be split in 2.
-Of course you'll need a glue method to chain the two calls, but now you can separately test the two main methods 
+E.g. if you say "this method makes an http request AND parses its output to a bean" then the method shall be split in 2.
+Of course you'll need a glue method to chain the two calls, but now you can separately test the two main methods in an isolated way. The tests will be more focused on the specific behavior
+
+Like every advice you see on the internet, please take this with a grain of salt.
