@@ -11,4 +11,4 @@ In this [fantastic article](https://blog.nelhage.com/2016/12/how-i-test/) by Nel
 
 > Encode every single bug you find as a test, to ensure that you’ll notice if you ever encounter it again.
 
-The last one marries well with the boy scout rule
+The last one marries well with [the boy scout rule](2017-01-02-boy-scout-rule.md)
