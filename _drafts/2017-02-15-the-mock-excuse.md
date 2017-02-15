@@ -35,7 +35,7 @@ Moving parts of your logic into separate methods or classes brings you exactly i
 With this frame of mind, one can even point out that: 
 
 * using mocks is actually the first sign your code is bad
-* the entire purpose of mocking frameworks is pointing out this
+* the entire purpose of mocking frameworks is making this become apparent
 
 But this is a bit **too much**, mocking is not bad _per se_, 
 I'm just saying that you can be aware of these symptoms to avoid writing complicated code.
