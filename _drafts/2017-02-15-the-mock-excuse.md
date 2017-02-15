@@ -23,8 +23,13 @@ But what if this is a symptom, rather than a cause for not testing?
 This would mean that if you are frustrated by doing tests or seeing old tests fail after writing new code, 
 chances are that the problem lies in production code, not your tests.
 
-TODO EDIT FROM HERE
-Fewer lines of code means fewer lines of tests: and moving parts of your logic into separate methods or classes does
+Having code that relies on preexistent state is the first reason for using mocks: unless your logic is pure (in functional programming terms), you are gonna need some database or some state being pulled in your methods.
+But the last phrase contains the answer: you can move the logic to a separate method, and make the original method call the second _after_ pulling the state. This way you can isolate the tests for state-pulling logic, which now consists in mocking the database call (or whatever you need for it), and test your logic by providing raw data directly _without mocks_!
+
+Also, fewer lines of code means fewer lines of tests, would you prefer testing a 100-lines method or ten 10-lines methods? OR maybe twenty five 4-lines methods? I would die for 4-lines methods!
+Moving parts of your logic into separate methods or classes brings you exactly into this direction: it eases up your testing, and, as a byproduct, makes your code loosely coupled, which makes it easier to understand.
+
+TODO SHALL WE ADD MORE?
 
 THIS MAY AS WELL REMAIN AT THE BOTTOM
 ## Further reasoning
