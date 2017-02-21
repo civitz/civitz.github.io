@@ -3,10 +3,10 @@ layout: post
 title: On blaming mocks to avoid testing
 ---
 
-Too often I hear that testing is hard or unnecessary because the need for mocks. 
-
-And there is some truth in that: mocking isn't always the best solution for testing.
-They are painful to create (even with frameworks) and too often you find yourself re-writing 
+Too often I hear that testing is hard or unnecessary because the need for mocks. Here's my thoughts on this.
+<!--more-->
+There is some truth in saying that testing with mocks is hard or unnecessary: mocking isn't always the best solution for testing.
+Mocks are painful to create (even with frameworks) and too often you find yourself re-writing 
 your domain logic in tests to assure your code works as intended.
 Re-writing you logic in tests is tedious, but, more importantly, useless: it's the purpose of tests to ignore the logic, right?
 
