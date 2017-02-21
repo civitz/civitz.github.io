@@ -16,6 +16,7 @@ github_username: civitz
 
 # Build settings
 markdown: kramdown
+excerpt_separator: <!--more-->
 
 exclude:
     - Gemfile
