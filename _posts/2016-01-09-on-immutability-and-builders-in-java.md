@@ -4,7 +4,7 @@ title: On immutability and builders in java
 ---
 
 Immutable object with builders in java are a nice solution but can be tricky when there are mandatory and optional attributes. I've elaborated a solution based on chained interfaces that can be implemented easily, and possibly automated.
-
+<!--more-->
 Skip to the [implementation](#implementation-with-mandatory-attributes) part to see the code.
 
 # Situation
