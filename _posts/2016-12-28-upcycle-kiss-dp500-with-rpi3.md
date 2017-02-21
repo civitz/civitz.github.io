@@ -3,6 +3,8 @@ layout: post
 title: Upcycle a KiSS DP-500 with Raspberry Pi 3
 ---
 
+Here's my journey into upcycling and old piece of electronics into a beautiful media center.
+<!--more-->
 So i got this old beauty from my dad:
 
 ![]({{ site.baseurl }}/images/kissrpi3/front.jpg)
