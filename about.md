@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-![]({{ site.baseurl }}/images/civitz.png)
+![]({{ site.baseurl }}/images/civitz.jpg)
 
 I'm a passionate software developer from Padova, Italy.
 
