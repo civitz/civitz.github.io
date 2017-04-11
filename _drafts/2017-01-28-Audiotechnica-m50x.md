@@ -24,10 +24,10 @@ And, of course:
 - sells at a decent price: ideally under 200€
 
 
-As you can see those are pretty clear (and stringent) requirements. 
+As you can see those are pretty clear (and strict) requirements. 
 
 I've done some research on the Internet, and luckily one of my favorite youtubers came out with a good candidate: the Audio-technica ATH-M50x, see [this](https://www.youtube.com/watch?v=y5DyEYuvF3o) and [this](https://www.youtube.com/watch?v=lEjwyYOFwZg) videos.
 
+These headphones tick all the boxes, and are sold for less than 200€ (or around 200$).
 
-- almost-monitor frequency response
-
+Best of all, their frequency response is almost monitor-like. They are definetly not linear, in fact they are _a little_ pushed up on the lower frequencies, but they sound great.
