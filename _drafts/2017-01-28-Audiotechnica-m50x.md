@@ -5,29 +5,29 @@ title: Audio-technica ATH-M50x for the music-conscious silent developer
 
 I am a silent developer.
 
-I like to be in a quiet room and to reach deep focus on what I do. 
+I like to be in a quiet room and to focus deeply on what I do. 
 
-This means I'm not comfortable in an open-space office, but that's exactly the enviroment I work in.
-What to do then? Of course I use headphones and push that volume **UP**.
+This means I'm not comfortable working in an open-space office -- which unfortunately is exactly the kind of environment I have to cope with.
+How? Of course, by putting on a pair of trusty headphones and pushing that volume **UP**.
 
-But which headphones? One could go with the cheapest the could find and hope they isolate you from the external enviroment... but I had some more clear requirements. More specifically i needed a pair of headphones that:
+But which headphones? One could just go with the cheapest pair one could find, and hope for sufficient isolation from the external environment... But I have clearer requirements. More specifically, I need a pair of headphones that:
 
-- are over-the-ears: I need my ears covered to maximize isolation
+- are over-the-ear: I need my ears covered to maximize isolation
 - are closed-back: I don't want my colleagues to be bothered by my music
-- are isolating: the two above do not guarantee that headphones isolates you from the external enviroment
-- have decentl build quality
-- have soft pads/are comfortable: for using long them long hours
-- have almost-monitor frequency response: I'm no music head or audiophile, but if headphones/source does not deliver a decent sound quality, I prefer to avoid listening to music altogether
+- isolate well: the previous two requirements alone do not guarantee that the headphones isolate you from the external environment
+- have decent build quality: I want not to worry about handling my headphones when I’m absorbed by work
+- have soft pads/are comfortable: for long hours of use
+- have a pleasant sound (with a relatively flat frequency response): I'm no audiophile, but if the headphones do not deliver a decent sound quality, I’d rather avoid listening to music altogether
 
 And, of course:
 
-- sells at a decent price: ideally under 200€
+- sell at a decent price: ideally under 200€
 
 
-As you can see those are pretty clear (and strict) requirements. 
+As you can see, those are pretty clear and strict requirements. 
 
-I've done some research on the Internet, and luckily one of my favorite youtubers came out with a good candidate: the Audio-technica ATH-M50x, see [this](https://www.youtube.com/watch?v=y5DyEYuvF3o) and [this](https://www.youtube.com/watch?v=lEjwyYOFwZg) videos.
+I've done some research on the Internet, and luckily one of my favorite youtubers came out with a good candidate: the Audio-technica ATH-M50x -- see [this](https://www.youtube.com/watch?v=y5DyEYuvF3o) and [this](https://www.youtube.com/watch?v=lEjwyYOFwZg) videos.
 
-These headphones tick all the boxes, and are sold for less than 200€ (or around 200$).
+These headphones tick all the boxes, and sell [on Amazon](https://www.amazon.it/Technica-ATH-M50X-Cuffie-Monitor-Professionali/dp/B00HVLUR86) for less than 200€ (or around 200$).
 
-Best of all, their frequency response is almost monitor-like. They are definetly not linear, in fact they are _a little_ pushed up on the lower frequencies, but they sound great.
+Best of all, their frequency response is fairly flat. In fact, the lower frequencies are enhanced ever so slightly, but the overall sound is pleasant and detailed.
