@@ -31,3 +31,5 @@ I've done some research on the Internet, and luckily one of my favorite youtuber
 These headphones tick all the boxes, and sell [on Amazon](https://www.amazon.it/Technica-ATH-M50X-Cuffie-Monitor-Professionali/dp/B00HVLUR86) for less than 200€ (or around 200$).
 
 Best of all, their frequency response is fairly flat. In fact, the lower frequencies are enhanced ever so slightly, but the overall sound is pleasant and detailed.
+
+I hope that this post will help you choosing the right headphones for you ;)
