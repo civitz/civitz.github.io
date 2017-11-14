@@ -5,12 +5,20 @@ tags:
   - raspberry
   - microsd
   - linux
+  - readonly
+  - dd
+  - OSMC
 ---
 
 I was about to try the latest [OSMC](https://osmc.tv/) on my Raspberry Pi3, and I needed to backup my microSD before proceeding.
 
-I fired up my laptop, booted linux, and typed my usual `dd` (with a hint of of `gzip` because we don't want 64GB of zeroes) and... nothing happens!
-The first thought was: "Fear not, padawan, it must be the SD lock", so I checked and, to my dismay, it was not.
+I fired up my laptop, booted linux, and typed my usual `dd` (with a hint of of `gzip` because we don't want 64GB of zeroes) and...
+
+```
+dd: opening `/dev/sdc': Read-only file system
+```
+
+The first thought was: "Fear not, padawan, it must be the SD lock", so I checked and, to my dismay, nothing happens!
 I tried the usual reboot. Guess what? Nothing. Nada. Nichts.
 
 ## Please, I just need to backup my microSD! 
