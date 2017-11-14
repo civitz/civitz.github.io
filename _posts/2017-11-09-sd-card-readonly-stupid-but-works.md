@@ -1,6 +1,6 @@
 ---
 layout: post
-title: If it's stupid but it works, it's not stupid.
+title: If it's stupid but it works, it's not stupid
 tags:
   - raspberry
   - microsd
@@ -31,7 +31,7 @@ And of course SO was full of the usual:
 - say a little prayer
 - PEBKAC
 
-Until i stumbled upon [this answer](https://raspberrypi.stackexchange.com/a/24535), buried between others because of a low score.
+Until i stumbled upon [this answer](https://raspberrypi.stackexchange.com/a/24535), buried between others because of a low score:
 > You won't believe this, but spraying compressed air into the card slot near where the read-only switch is sensed fixed it for me. I hardly believe it.
 
 And to me it sounded like "if it's stupid but it works, it's not stupid": I blew gently into the card slot, re-inserted the microsd, and BAM, it read & wrote as easy as 1-2-3.
