@@ -1,6 +1,7 @@
 ---
 published: false
 layout: post
+title: To trust or not to trust, that is the question
 tags:
   - fake news
   - ranking
