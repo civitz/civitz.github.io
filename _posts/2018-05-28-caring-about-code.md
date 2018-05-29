@@ -9,7 +9,6 @@ tags:
   - code
   - quality
 ---
-# Caring about code
 
 What does testing and code review, have in common? These are all ways to make you face your own work, forcing you to mentally check and re-check what you have done.
 
