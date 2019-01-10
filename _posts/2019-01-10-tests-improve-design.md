@@ -1,5 +1,12 @@
 ---
 published: false
+layout: post
+tags:
+  - testing
+  - design
+  - code
+  - quality
+  - TDD
 ---
 I came across [this wonderful article by Kelly Sutton](http://kellysutton.com/2017/04/18/design-pressure.html) about TDD and code design.
 
