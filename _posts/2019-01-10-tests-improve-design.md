@@ -1,5 +1,6 @@
 ---
-published: false
+published: true
+title: Tests improve design
 layout: post
 tags:
   - testing
