@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 title: Upcycle a KiSS DP-500 with Raspberry Pi 3 - Part 2
 ---
