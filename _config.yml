@@ -8,7 +8,7 @@
 # Site settings
 title: Roberto Piva
 email: piva.roberto.88@gmail.com
-description: A stream of bytes with interesting patterns.
+description: Software and more.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://civitz.github.io # the base hostname & protocol for your site
 twitter_username: il_civitz
