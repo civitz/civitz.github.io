@@ -6,7 +6,7 @@ permalink: /about/
 
 ![]({{ site.baseurl }}/images/civitz.jpg)
 
-I'm a passionate software developer from Padova, Italy.
+I'm a software engineer from Padova, Italy.
 
 ### Contact me
 
