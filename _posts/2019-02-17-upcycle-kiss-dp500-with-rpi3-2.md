@@ -34,4 +34,4 @@ The final setup looks like this:
 
 Later on the hard disk proved faulty, so I replaced it with an external usb hard disk: since the hub is powerful enough, all I needed to do was to zip-tie the hard disk inside the case, and plug the hard disk to the hub.
 
-Next phase would be to use the IDE cable to bring life to the DVD-reader, so that the KiSS re-gain its original functionality of being a DVD/DivX reader.
+Next phase would be to use the IDE cable to bring life to the DVD-reader, so that the KiSS re-gains its original functionality of being a DVD/DivX reader.
