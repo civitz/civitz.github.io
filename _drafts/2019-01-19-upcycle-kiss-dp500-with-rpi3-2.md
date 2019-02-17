@@ -23,6 +23,13 @@ To provide power to the hub I had to conceal the hub's own power supply inside t
 
 This way I can still use the power button at the front panel to power on the frankenstein. Luckly the hub's power supply is very small and I could fit it under the case power socket, see: 
 
-![]({{ site.baseurl }}/images/kissrpi3/supply.jpg)
+![]({{ site.baseurl }}/images/kissrpi3/supply2.jpg)
 
-Multiple screw terminals can be arranged in the form of a barrier strip (as illustrated at the top right), with a number of short metal strips separated by a raised insulated "barrier" on an insulating "block" - each strip having a pair of screws with each screw connecting to a separate conductor, one at each end of the strip. These are known as connector strips or chocolate blocks ("choc blocks") in the UK. This nick-name arises from the first such connectors made in the UK by GEC, Witton in the 1950s. Moulded in brown plastic they were said to resemble a small bar of chocolate. [from https://en.wikipedia.org/wiki/Screw_terminal]
+I then attached the usb-to-IDE adapter to the hard disk. The hard disk itself is powered by the original KiSS power supply.
+The final setup looks like this:
+
+![]({{ site.baseurl }}/images/kissrpi3/final.jpg)
+
+Later on the hard disk proved faulty, so I replaced it with an external usb hard disk: since the hub is powerful enough, all I needed to do was to zip-tie the hard disk inside the case, and plug the hard disk to the hub.
+
+Next phase would be to use the IDE cable to bring life to the DVD-reader, so that the KiSS re-gain its original functionality of being a DVD/DivX reader.
