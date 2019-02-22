@@ -25,7 +25,7 @@ The problem with collaborative filtering is that it creates filter bubbles, area
 
 This is why you get recommended Spice girls if you've listened Madonna _once_. Sorry Spotify, nothing bad to say about Spice Girls, but I like Madonna because she has *PERFECT* production, not because I love '90 teenage music. I have [djent](https://open.spotify.com/track/0PYlcAw00yb0Sfy1UqSP4t?si=oPIeWdSfQkyGWOdQlB0vcw) artists in my listening history, why don't Spotify aknowledge this?
 
-I've seen [a post](https://hackernoon.com/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe) regarding Spotify's filtering and recommendation engine: they have all the data and all the ML power at their hands.
+There is [a post](https://hackernoon.com/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe) regarding Spotify's filtering and recommendation engine where it is explained how it calculates the next song to suggest: the company have all the data and all the ML power at their hands.
 
 What I (we?) need is a way to somehow
 * abstract the latent semantic of what I am listening to: it may be audio features, or other information such as genre, or years, or anything really
