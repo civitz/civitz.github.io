@@ -3,8 +3,6 @@ published: true
 layout: post
 title: Upcycle a KiSS DP-500 with Raspberry Pi 3 - Part 2
 ---
-## Upcycle a KiSS DP-500 with Raspberry Pi 3 - Part 2
-
 It's been a long time since [last update on raspberry frankenstein]({% post_url 2016-12-28-upcycle-kiss-dp500-with-rpi3 %}), so here's an update.
 
 After some trials, the power supply has shown its drawbacks. The 5 Volt supply did not provide enough power for the RPi and it is probably failing. The 12 Volt ATA circuitry seems to be still reliable enough to provide power.
