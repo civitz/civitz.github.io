@@ -10,6 +10,7 @@ tags:
   - rant
 ---
 So you have a spotify account because you love music.
+
 You care a lot about quality of music, and you try everything: Piano solo? [Check](https://open.spotify.com/track/0T4KV1pj8as2xvdHZAP5ae?si=ePyL2TziT2qL5FQqVLfSKw). Acoustic fingerstyle? [Sure](https://open.spotify.com/track/1G4WAevBC1nzpEsmR90M0A?si=tq5ZvT7gSAGLMwi_NWAJ5Q). Glitch electronica? [Very yes](https://open.spotify.com/track/36mKvcSraxyyLzJimZAh4l?si=DgRtv_FtRmaUypOcV7nkBw). Vegetarian progressive grindcore? [Areyoukiddingme..yes](https://www.youtube.com/watch?v=Hreqn9j3PHI)!
 
 And you thought it was a good idea to settle for the most common service for music streaming, so there it is, your account.
