@@ -16,15 +16,22 @@ Sometimes you get surprised: you hear a famous song over in an advertisement and
 
 You spot a pattern...
 
-Listened to Madonna once? Here's Michael Jackson
+Listened to Madonna once? Here's Michael Jackson and Kylie Minogue.
 Listened to Girl from Ipanema? You'll surely like these 10 brazilian artist you've never heard about. But maybe you just wanted Girl from Ipanema _once_.
 
 This is [collaborative filtering](https://en.wikipedia.org/wiki/Collaborative_filtering) in action. A bunch of people listen to similar songs, and the algorithm picks from the common pool if you happen to listen one of pool's songs.
 
-The problem with collaborative filtering is that it creates filter bubbles, areas where you can enter but not exit: once you start listening to songs _inside_ the bubble, you get recommended the same songs over and over.
+The problem with collaborative filtering is that it creates filter bubbles, areas where you can enter but not exit: once you start listening to songs _inside_ the bubble, you get recommended the same artists over and over. Facebook and Youtube have the same problem.
 
-This is why you get recommended Spice girls if  you've listened Madonna _once_. Sorry Spotify, nothing bad to say about Spice Girls, but I like Madonna because she has *PERFECT* production, not because I love '90 teenage music. I have [djent](https://open.spotify.com/track/0PYlcAw00yb0Sfy1UqSP4t?si=oPIeWdSfQkyGWOdQlB0vcw) artists in my listening history, why don't Spotify aknowledge this?
+This is why you get recommended Spice girls if you've listened Madonna _once_. Sorry Spotify, nothing bad to say about Spice Girls, but I like Madonna because she has *PERFECT* production, not because I love '90 teenage music. I have [djent](https://open.spotify.com/track/0PYlcAw00yb0Sfy1UqSP4t?si=oPIeWdSfQkyGWOdQlB0vcw) artists in my listening history, why don't Spotify aknowledge this?
 
-I've seen [a post](https://hackernoon.com/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe) regarding their filtering and recommendation engine: they have all the data and all the ML power at their hands, and yet they do a poor job for the musically curious listeners...
+I've seen [a post](https://hackernoon.com/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe) regarding Spotify's filtering and recommendation engine: they have all the data and all the ML power at their hands.
 
-They do a decent job for mainstream listeners though. Or wait...do they?
+What I (we?) need is a way to somehow
+* abstract the latent semantic of what I am listening to: it may be audio features, or other information such as genre, or years, or anything really
+* address the filter bubble(s) I may be in, possibly inverting its weight
+* suggest me something related to the semantic of what I listen, but stricly outside the bubble.
+
+For example, if I listen to Rage Against the Machine and World's End Girlfriend, maybe I have a thing for bass lines, strong guitars, and challenging rithms, so some jazz/progressive metal is a good solution to exit the filter bubble: Ephel Duath, Periphery, Gojira may be candidates.
+
+Can you do it, Spotify?
