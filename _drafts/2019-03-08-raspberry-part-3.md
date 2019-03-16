@@ -33,3 +33,18 @@ GPIO.cleanup()           # clean up GPIO on normal exit
 
 print("goodbye")
 ```
+
+```
+osmc@osmc:~/cdeject$ cat /lib/systemd/system/cdejector.service
+[Unit]                                                        
+Description = GPIO DVD ejector                                
+Wants=network-online.target                                   
+After=network-online.target                                   
+                                                              
+[Service]                                                     
+Type = idle                                                   
+ExecStart = /opt/cdejector/cdejector.py                       
+                                                              
+[Install]                                                     
+WantedBy = multi-user.target                                  
+```
