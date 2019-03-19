@@ -73,7 +73,7 @@ And this time it actually ejected the dvd drive!
 
 ![]({{ site.baseurl }}/images/kissrpi3/part3/eject.gif)
 
-This code is good but it is constantly polling for the button status and I wanted a better solution.
+This code does its job but it is constantly polling for the button status and I wanted a better solution.
 
 So I coded an interrupt-based solution following the tutorial from [https://raspi.tv/2013/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio-part-3](https://raspi.tv/2013/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio-part-3) with some tweaks here and there:
 
