@@ -6,7 +6,7 @@ title: Upcycle a KiSS DP-500 with Raspberry Pi 3 - Part 3
 
 After posting [our previous issue]({% post_url 2019-02-17-upcycle-kiss-dp500-with-rpi3-2 %}) to [reddit](https://www.reddit.com/r/raspberry_pi/comments/as0k4y/recycled_a_kiss_dp500_case_to_make_an_rpi3_osmc/) i finally had time to tinker with the frankenstein (shall we call it *FrankenKiss*?). We need to find our way to the eject button!
 
-A closer inspection of the eject button reveals that it's pins are protruding from the inside panel as shown in this animation:
+A closer inspection of the eject button reveals that its pins are protruding from the inside panel as shown in this animation:
 
 ![]({{ site.baseurl }}/images/kissrpi3/part3/button-placement.gif)
 
