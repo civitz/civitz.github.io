@@ -12,7 +12,7 @@ I said recognized but it turns out there is no phisical button directly attached
 
 I tried a workaround on this, by forcing the visibility of the "Disc" menu on osmc's skin, but it was an ugly hack and I will not discuss it here...
 
-I instead focused on the front panel: the KiSS has a 5 buttons, which used to work to eject the disk, play, change tracks, etcetera. These buttons are connected to a board, which in turns exposes whats looks like a serial cable. The cable was connected to the main board of the original KiSS so the kind of connection could be anything: there were not enough wires for them to be one per button, and the protocol that the board uses could be an I2C or a proprietary protocol. I had no time for that :)
+I instead focused on the front panel: the KiSS has a 8 buttons, which used to work to eject the disk, play, change tracks, etcetera. These buttons are connected to a board, which in turns exposes whats looks like a serial cable. The cable was connected to the main board of the original KiSS so the kind of connection could be anything: there were not enough wires for them to be one per button, and the protocol that the board uses could be an I2C or a proprietary protocol. I had no time for that :)
 
 A closer inspection of the eject button reveals that its pins are protruding from the inside panel as shown in this animation:
 
