@@ -8,7 +8,7 @@ After posting [our previous issue]({% post_url 2019-02-17-upcycle-kiss-dp500-wit
 
 After the old IDE HDD gave up, I connected the IDE-to-USB adapter to the DVD reader, plugged the power cable, and it got recognized by debian/osmc without any hassle. Osmc sees the dvd or cd as the right thing (e.g. dvd with files, or standard video dvd, and so on) and lets you play media from it.
 
-I said recognized but it turns out there is no phisical button directly attached to the eject mechanism of the reader, so to operate the tray I had to manually input `eject` on the command line. It worked, but it was inconvenient and my dad could not do this on its own.
+I said recognized but it turns out there is no physical button directly attached to the eject mechanism of the reader, so to operate the tray I had to manually input `eject` on the command line. It worked, but it was inconvenient and my dad could not do this on its own.
 
 I tried a workaround on this, by forcing the visibility of the "Disc" menu on osmc's skin, but it was an ugly hack and I will not discuss it here...
 
