@@ -4,7 +4,15 @@ layout: post
 title: Upcycle a KiSS DP-500 with Raspberry Pi 3 - Part 3
 ---
 
-After posting [our previous issue]({% post_url 2019-02-17-upcycle-kiss-dp500-with-rpi3-2 %}) to [reddit](https://www.reddit.com/r/raspberry_pi/comments/as0k4y/recycled_a_kiss_dp500_case_to_make_an_rpi3_osmc/) i finally had time to tinker with the frankenstein (shall we call it *FrankenKiss*?). We need to find our way to the eject button!
+After posting [our previous issue]({% post_url 2019-02-17-upcycle-kiss-dp500-with-rpi3-2 %}) to [reddit](https://www.reddit.com/r/raspberry_pi/comments/as0k4y/recycled_a_kiss_dp500_case_to_make_an_rpi3_osmc/) i finally had time to tinker with the frankenstein (shall we call it *FrankenKiss*?). This time we tackle the DVD reader.
+
+After the old IDE HDD gave up, I connected the IDE-to-USB adapter to the DVD reader, plugged the power cable, and it got recognized by debian/osmc without any hassle. Osmc sees the dvd or cd as the right thing (e.g. dvd with files, or standard video dvd, and so on) and lets you play media from it.
+
+I said recognized but it turns out there is no phisical button directly attached to the eject mechanism of the reader, so to operate the tray I had to manually input `eject` on the command line. It worked, but it was inconvenient and my dad could not do this on its own.
+
+I tried a workaround on this, by forcing the visibility of the "Disc" menu on osmc's skin, but it was an ugly hack and I will not discuss it here...
+
+I instead focused on the front panel: the KiSS has a 5 buttons, which used to work to eject the disk, play, change tracks, etcetera. These buttons are connected to a board, which in turns exposes whats looks like a serial cable. The cable was connected to the main board of the original KiSS so the kind of connection could be anything: there were not enough wires for them to be one per button, and the protocol that the board uses could be an I2C or a proprietary protocol. I had no time for that :)
 
 A closer inspection of the eject button reveals that its pins are protruding from the inside panel as shown in this animation:
 
