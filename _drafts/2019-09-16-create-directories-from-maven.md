@@ -1,6 +1,7 @@
 ---
 published: false
 layout: post
+title: Creating directories from maven
 ---
 ## Creating directories from maven
 
