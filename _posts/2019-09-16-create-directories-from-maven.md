@@ -3,7 +3,6 @@ published: true
 layout: post
 title: Creating directories from maven
 ---
-## Creating directories from maven
 
 I was working with a library which generates code from a template. To avoid committing the generated code I used a maven plugin, so I can commit the template, and generate the code at compile-time.
 
