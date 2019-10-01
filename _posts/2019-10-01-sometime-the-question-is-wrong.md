@@ -25,5 +25,7 @@ Elon suggests that to avoid that we need to always question constraints: sometim
 > The constraints that you are given are guaranteed to [be] some degree wrong. [...] Because the counterpoint would be that they are perfect.
 > [...] One of the biggest traps of smart engineers is optimizing a thing that shouldn't exist
 
-He even quoted Hitchhiker's guide to the galaxy: the big computer outputted "42",
-but the hardest problem was finding the right question: sometimes finding the right question is harder than finding the answer, and sometimes the question itself is wrong.
+He even quoted Hitchhiker's guide to the galaxy: the Deep Thought computer outputted "42",
+but the hardest problem was finding the right question. Sometimes finding the right question is harder than finding the answer, and once you frame the question, the answer comes easy.
+
+And sometimes, the question is wrong.
