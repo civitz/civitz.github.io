@@ -6,7 +6,7 @@ title: Sometimes the question is wrong
 
 So I came across this interview of Elon Musk which I handily link here:
 
-[![Elon Musk interview](http://img.youtube.com/vi/cIQ36Kt7UVg/0.jpg)](https://www.youtube.com/watch?v=cIQ36Kt7UVg)
+[![Elon Musk interview](https://img.youtube.com/vi/cIQ36Kt7UVg/0.jpg)](https://www.youtube.com/watch?v=cIQ36Kt7UVg)
 
 It is an interview, where, among other questions, Elon explain in simple words how [Conway's Law](https://en.wikipedia.org/wiki/Conway%27s_law)
 can be defeated in organizations.
