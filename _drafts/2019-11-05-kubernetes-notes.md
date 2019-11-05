@@ -4,15 +4,15 @@ layout: post
 title: Notes from the kubernetes introductory course of EdX
 ---
 
-# Kubernetes introduction
+Kubernetes introduction
 
-## Container runtimes
+# Container runtimes
 
 * opencontainer/runc
 * containerd/containerd
 * coreos/rkt
 
-## Container orchestrators
+# Container orchestrators
 
 * Amazon Elastic Container Service (ECS) is a docker orchestrator
 * Docker swarm
@@ -20,7 +20,7 @@ title: Notes from the kubernetes introductory course of EdX
 * Marathon (apache mesos)
 * Nomad (hashicorp)
 
-## Features
+# Features
 
 * automatic bin-packing:
     schedule containers based on resource needs
@@ -35,20 +35,20 @@ title: Notes from the kubernetes introductory course of EdX
 * batch execution, long running jobs
 * RBAC
 
-## Architecture
+# Architecture
 
 Master (1+) - worker (1+)
 Cluster state via **etcd** (distributed)
 Network via Container Network Interface (CNI)
 
-### Master node
-#### Control Plane
+## Master node
+### Control Plane
 A set of agents with different roles in cluster's management.
 It's the brain of k8
 It guarantees HA of etcd if installed locally.
 ETCD can be run outside the k8, beyond k8s' control, but this way HA is not guaranteed
 
-#### Components
+### Components
 * API server - kube-apiserver - interacts with ETCD (etcd only interacts with kube-apiserver)
     + supports external custom API servers, which may extend k8 control plane, and act as a proxy for them
 * scheduler - kube-scheduler - assigns new objects, such as pods, to nodes
@@ -67,7 +67,7 @@ ETCD can be run outside the k8, beyond k8s' control, but this way HA is not guar
     + based on Raft Consensus Algorithm
     + stores cluster state, subnets, configmaps, secrets, ...
 
-### Worker node
+## Worker node
 Running env for client apps
 Encapsulate apps in Pods, controlled by control plane agents from the master node.
 Pods are scheduled (by the scheduler?) on workers where the necessary resources are available (cpi, memory, storate, network, etc..).
@@ -76,7 +76,7 @@ It's a logical collection of one or more containers scheduled together.
 
 To access the app from the external work, we connect to the worker node directly, not through master node.
 
-#### Components
+### Components
 
 * container runtime - to run and manage containers' lifecycle of pods.
     Supports
@@ -103,7 +103,7 @@ To access the app from the external work, we connect to the worker node directly
     + monitoring: cluster-level container metrics, save them to central data store
     + logging: cluster-level container log, save to central log store for analysis
 
-### Networking
+## Networking
 
 * container-to-container (inside pod)
     + usually with system's kernel features: on linuxl it's **network namespace**, which is shared across containers
@@ -117,14 +117,14 @@ To access the app from the external work, we connect to the worker node directly
     + **services** are constructs to encapsulate networkign rules definitions on cluster nodes.
     + exposing service to the external world through **kube-proxy**: each app is reachable with a virtual IP.
 
-#### Container Network Interface
+### Container Network Interface
 Set of specifications and libraries to configure networking for contairs
 A few core plugins, most CNI plugins are 3rd party Software-Defined Networking (SDN) solutions (e.g. Flannel, weave, calico).
 Container runtime offload IP assignment to CNI.
 
 Think before deploying!
 
-## Installation and configuration
+# Installation and configuration
 
 * All-in-One Single-Node Installation: ok for learning, not in prod. E.g. **minikube**
 * Single-Node etcd, Single-Master and Multi-Worker Installation
@@ -137,7 +137,7 @@ Other variations:
 * networking solution?
 * ...
 
-### Tools and resources
+## Tools and resources
 
 * **kubeadm** tool to bootstrap single or multi-node cluster. Does not support host provisioning.
 * **kubespray** (was kargo) install HA-k8 on aws, gce, azure, openstack, bare metal. Based on ansible. Part of k8 incubator project
@@ -145,7 +145,7 @@ Other variations:
 * **kube-aws** create, destroy, upgrade k8 on aws from cli. Part of k8 incubator project
 * we can also install it from scratch
 
-### Minikube
+## Minikube
 
 * type-2 hypervisor
 * **kubectl** to access and manage k8 cluster.
@@ -160,7 +160,7 @@ To access via ssh:
 minikube ssh
 ```
 
-## Accessing k8 cluster
+# Accessing k8 cluster
 
 We will use **kubectl**
 
@@ -171,7 +171,7 @@ We will use **kubectl**
 
 **kubectl** is a CLI client
 
-### API
+## API
 
 ![](./api-server-space_.jpg)
 
@@ -187,7 +187,7 @@ APIs have groups:
 * System-wide
   - This group consists of system-wide API endpoints, like `/healthz`, `/logs`, `/metrics`, `/ui`, etc.
 
-### kubectl Configuration File
+## kubectl Configuration File
 kubectl client needs the master node endpoint and appropriate credentials to be able to interact with the API server running on the master node.
 
 Documentation at [https://kubernetes.io/docs/reference/kubectl/overview/]()
@@ -250,7 +250,7 @@ KubeDNS is running at https://192.168.99.100:8443/api/v1/namespaces/kube-system/
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
-### Dashboard
+## Dashboard
 
 > the Dashboard application is a Deployment controlling a ReplicaSet and a Pod, and it is exposed by a Service.
 
@@ -262,7 +262,7 @@ $ minikube dashboard
 
 Dashboard will be accessible in localhost, for example [http://127.0.0.1:37751/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/]()
 
-### Proxy
+## Proxy
 
 ```bash
 kubectl proxy
@@ -270,7 +270,7 @@ kubectl proxy
 
 Issuing the kubectl proxy command, kubectl authenticates with the API server on the master node and makes the Dashboard available on a slightly different URL than the one earlier, this time through the proxy port 8001.
 
-### Accessing APIs without proxy
+## Accessing APIs without proxy
 
 We can authenticate with a **Bearer Token**
 
@@ -292,7 +292,7 @@ Or we can extract the certificate from .kube/config and call the apiserver via:
 curl $APISERVER --cert encoded-cert --key encoded-key --cacert encoded-ca
 ```
 
-## kubernetes objects
+# kubernetes objects
 
 Pods, ReplicaSets, Deployments, Namespaces, Labels, Selectors ...
 
@@ -331,4 +331,217 @@ The required fields are:
 * metadata: object's basic info, such as name, labels.
 * spec: this is the desired state of the Deployment
     + in this example we want 3 pods running at any given time
-    + each pod 
+    + each pod is defined in a template in a `spec.template`
+    + each nested object (a pod in this example) reatins metadata and spec, and lose the `apiVersion` and `kind`, both being replaced by `template`.
+    + in `spec.template.spec` we define the desired state of the Pod. In this example, a single container running `nginix.1.15.11` from docker hub
+
+## Pods
+
+The smallest and simplest K8 object. Represents a single instance of the application.
+
+> A Pod is a logical collection of one or more containers
+
+Containers in a pod:
+* are scheduled together on the same host
+* share the same network namespace
+* have access to the same external storage (**volumes**)
+
+![](./Pods.png)
+
+**Pods are ephemeral**, and do not self-heal.
+Controllers manage replication, fault-tolerance, self-healing, etc. Examples of controllers are: `Deployments`, `ReplicaSets`, `ReplicationControllers`, etc. We attach a nested spec to a controller object using the Pod Template, as the example before.
+
+An example for a Pod object's config is:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.15.11
+    ports:
+    - containerPort: 80
+```
+
+`apiVersion` field must specify `v1` for the Pod definition. The second required field is `kind`, specifying the `Pod` type. The third required field is the `metadata` with object's name and label. The fourth required field is `spec` and marks the beginning of the definition of the desired state of the Pod object. This last part is also called `PodSpec`. The example specified a single container running `nginix:1.15.11` image from docker.
+
+## Labels
+
+Labels are key-value pairs attached to kube objects (e.g. Pods, ReplicaSets). We uise them to organize and select subsets of objects.
+Objects of different types can have the same label, and so labels do not provide uniqueness to objects.
+
+Controllers use Labels to group decoupled objects rather than using names or IDs.
+
+![](./Labels.png)
+
+In the image above, we use two labels: **app** and **env**, label **env=dev**  selects the top two pods, while **app=frontend** selects the left two pods.
+Labels can be combined to select more specifically, for example we can select the bottom left Pod by choosing **app=frontend, env=qa**
+
+### Label selectors
+
+Controllers use Label Selectors to select a subset of objects.
+
+* Equality-based selectors: use `=`, `==` (same as `=`),`!=` for selecting objects
+* Set-based selectors: filter using set of values
+  + `in`,`notin` for label valuues
+  + `exist`, `does not exist` for for label keys
+  + e.g: `env in (dev, qa)` selects objects with `env` Label set to either `dev` or `qa`. With `!app` we are electing objects with no Label key `app`.
+
+## ReplicationControllers
+
+**not recommended**
+
+A controller that ensures a specific number of replicas of a Pod is runnign at any given time.
+If more or less Pods are running, the controller terminates or spin up Pods accordingly.
+Generally speaking **we don't deploy a Pod indipendently, because it will not be able to re-start itself. The recommended method is to use some type of replication controllers to create and manage Pods**.
+
+The default controller is a `Deployment` which configures a `ReplicaSet` to manage Pods' lifecycle.
+
+## ReplicaSets
+
+It is a *next generation ReplicationController*. 
+
+Scaling can happen manually or via an autoscaler.
+
+![](Replica_Set1.png)
+
+In the example above we can see a graphical reperesentation of a ReplicaSet, with a replica count of 3 for a Pod.
+
+If a pod is forced to terminate (due to insufficient resources, timeout, etc.), the current state no longer matches the desired state, so the ReplicaSet will detect it and create an additional pod.
+
+**ReplicaSets can be used indipendently as Pod, but the are limited by themselves. Deployments provide complimentary features and automatically create a ReplicaSet for Pods.**
+
+## Deployments
+
+A declarative update to Pods and ReplicaSets.
+
+The DeploymentController is part of the master node's controller manager and ensures that the current state is maintained.
+It allows updates and downgrades via **rollouts** and **rollbacks**, and maanges ReplicaSets for scaling.
+
+In the following example, the Deployment creates a `ReplicaSet A` with 3 Pods, each pod template is configured to run `nginix:1.7.9`. This is recorded as `Revision 1`. The picture below represents the current state:
+
+![](Deployment_Updated.png)
+
+If we change the Pods' template and update from `nginix:1.7.9` to `nginix:1.9.1`, the Deployment triggers a new `ReplicaSet B` for the new container, representing a neew version: `Revision 2`
+
+The transition is seamless between:
+* ReplicaSet A with 3 Pods on version 1.7.9 to ReplicaSet B with 3 Pods on version 1.9.1
+* Revision 1 to Revision 2
+the transition is called Deployment rolling update.
+
+The **rolling update** is triggered when we update the Pods Template for a deployment. Changing the scaling or the labeling does not trigger a rolling update (they do not change the Revision number).
+
+Once completed, the Deployment will show both ReplicaSets A and B, with A scaled to zero Pods, and B scaled to 3 Pods.
+
+![](ReplikaSet_B.png)
+
+Once the new replicaset and the 3 pods are ready, the Deployment start managing them actively. Previous revision is kept for rollback capability.
+
+After being deployed successfully, the Deployment point only to the new replicaset B.
+
+## Namespaces
+
+Multiple users and teams can use the same kube cluster. The cluster is partitioned into virtual sub-clusters via Namespaces. The names of objects or resources created inside a namespace are unique, but not across Namespaces in the cluster.
+
+We can get a list of all namespaces available for the cluster via:
+
+```bash
+$ kubectl get namespaces
+NAME              STATUS       AGE
+default           Active       11h
+kube-node-lease   Active       11h
+kube-public       Active       11h
+kube-system       Active       11h
+```
+
+These above are the default namespaces, namely:
+* kube-system contains objecst created by Kubernetes itself, mostly control plane agents (these are containers too!)
+* default contains objects created by admins and developers (this is the default if not specified)
+* kube-public is a special, unsecured, readable-by anyone namespace. This is sued to expose public, non-sensitive info about the cluster.
+* kube-node-lease holds lease objects for node heartbeat data
+
+It is good practice to create more namespaces to virtualize the cluster for users and developer teams.
+
+With **Resource Quotas** we can divide the cluster resources within Namespaces.
+
+# How control objects via kubectl
+
+## Create a deployment (on the fly)
+
+```
+kubectl create deployment mynginx --image=nginx: 1.15-alpine
+```
+
+## Get the state of a deployment, replicaset, and pods
+
+```bash
+kubectl get deploy,rs,po
+# the above is a shorthand for kubectl get deployment,replicaset,pod
+```
+
+## Get the state of a deployment, replicaset, and pods with specific labels
+
+```bash
+kubectl get deploy,rs,po -l app=mynginx
+```
+Note that the deployment has a name and a version (looks like an hash).
+
+## Scale a deployment by adding replicas
+
+```bash
+kubectl scale deploy mynginx --replicas=3
+```
+Notice that deploy version does not change, only number of pods.
+
+## To see the scaling in progress, use
+
+```
+kubectl describe deployment
+```
+
+## See rollout history of a specific deployment:
+
+```bash
+kubectl rollout history deploy mynginx
+```
+
+## Upgrade the image (will trigger a new version, a new deployment revision, and a rollout)
+
+```bash
+kubectl set image deployment mynginx nginx=nginx:1.16-alpine
+# note: rollout does not necessarily mean upgrade, this is just an example
+```
+
+if we continuously run `kubectl describe deployment` we can see kubernetes progressively spin up new containers of the new version, and gradually spin down the older version, eventually shutting down all the older ones.
+
+## Rollback a previous version
+
+Supposing we are not happy with the deployed version, we can rollback up to the latest 10 revision by first looking at the output of `kubectl rollout history deploy mynginx` and choosing which revision we want to rollback to. Then we run:
+
+```bash
+kubectl rollout undo deployment mynginx --to-revision=1
+```
+
+if we continuously run `kubectl describe deployment` we can see kubernetes progressively spin up new containers of the old version, and gradually spin down the newer version, eventually shutting down all the newer ones. At the end of the process, a new revision is created (which will be identical to revision 1 in this case) with the old deployment version. That is: revisions always increase, even in the case of rollbacks. Revision 1, now named Revision 3, is no longer available.
+
+**rolling updates and rollbacks are not Deployment-only, they are supported also by controllers, such as DaemonSets, StatefulSets**
+
+# Authentication, Authorization, Admission control
+
+Each API request has to go three different stages before being accepted by the server.
+
+* **Authentication**: Logs in a user.
+* **Authorization**: Authorizes the API requests added by the logged-in user.
+* **Admission Control**: Software modules that can modify or reject the requests based on some additional checks, like a pre-set Quota.
+
+Kubernetes does not know about users, nor it stores usernames. We can, however, use usernames for access control and request logging.
+
+Two kind of users:
+* **normal users**: managed outside kube, can access via user/client certificate, a file with username/pwd, google accounts, etc...
+* **service accounts**: in-cluster processes communicate with the API-server to perform different operations. Most accounts are created via the API server, but can be created manually. **Service accounts are tied to Namespaces** and mount their credentials as **Secrets** in etcd.
+
+Kube also supports **anonymous requests**. Kube also supports **user impersonations** to debug authorization policies.
