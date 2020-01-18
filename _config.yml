@@ -18,6 +18,9 @@ github_username: civitz
 markdown: kramdown
 excerpt_separator: <!--more-->
 
+collections:
+    bookmarks:
+
 exclude:
     - Gemfile
     - Gemfile.lock
