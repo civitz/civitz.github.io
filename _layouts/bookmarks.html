@@ -2,7 +2,8 @@
 layout: default
 ---
 <div class="home">
-    {% for bookmark in site.bookmarks%}
+    {% assign sorted = site.bookmarks | reverse %}
+    {% for bookmark in sorted %}
     <div class="post postContent">
         <div class="postTitle">
             <a class='postLink' href="{{bookmark.link}}">{% if bookmark.short %}{{bookmark.short}} | {% endif %}{{bookmark.link | truncate:40}}</a>
