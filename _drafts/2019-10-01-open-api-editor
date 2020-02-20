@@ -4,5 +4,9 @@ https://github.com/swagger-api/swagger-editor
 
 ```
 docker pull swaggerapi/swagger-editor
-docker run -d -p 80:8080 swaggerapi/swagger-editor
+docker run -d -p 8080:8080 swaggerapi/swagger-editor
+```
+
+```
+xdg-open http://127.0.0.1:8080
 ```
