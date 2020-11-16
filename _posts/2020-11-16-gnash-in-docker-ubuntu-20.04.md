@@ -5,10 +5,10 @@ title: "Running gnash on Ubuntu 20.04 with docker"
 ---
 
 A couple weeks ago I helped my sister upgrade her laptop to the latest ubuntu version available, a process which went without issues.
-The other day she calls me tell me she needs to play flash files and gnash no longer works. I chuckled at the thought of flash files in 2020...
-It turns out academia and book editors still use this technology in their digital media to 
-make it difficult to copy their precious data.
+The other day she calls me tell me she needs to play flash files and the player she used no longer works. I chuckled at the thought of flash files in 2020...
+It turns out academia and book editors still use this technology in their digital media to make it difficult to copy their precious data.
 
+Flash has always been a problem in linux, expecially in the web. Adobe provided a flash plugin for firefox, but for the poor souls who had to play standalone flash files there was no alternative. Then the gnash emerged: an open source flash player which reached a pretty good level of compatibility with the official format.
 The problem is: gnash is no longer available in official ubuntu repos due to the use of unpatched libraries and the understandable lack of will 
 to update its code.
 
