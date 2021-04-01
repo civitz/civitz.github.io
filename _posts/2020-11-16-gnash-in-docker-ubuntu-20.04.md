@@ -12,7 +12,7 @@ Flash has always been a problem in linux, expecially in the web. Adobe provided 
 The problem is: gnash is no longer available in official ubuntu repos due to the use of unpatched libraries and the understandable lack of will 
 to update its code.
 
-So how to resolve this _enpasse_ ? Docker of course, because every other alternative sucks and it turns out it's easier with docker with the aid of some tricks.
+So how to resolve this _impasse_? Docker of course, because every other alternative sucks and it turns out it's easier with docker with the aid of some tricks.
 
 My sister is already familiar with the basics of command line: she can navigate directories, launch commands, upgrade the system, etc... But I cannot force her to learn a lot of docker options. She is not a developer after all.
 
@@ -63,3 +63,13 @@ $ gnash filename.swf
 which is almost the same as having gnash installed.
 
 Happy sister, horray for for docker!
+
+## Update
+
+Remy van Elst recently pushed out a snap version of gnash, you can see his work here: [I've packaged up Gnash as a snap, for modern linux](https://raymii.org/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html).
+All you need to do is:
+```bash
+$ snap install gnash-raymii          # install gnash
+$ gnash-raymii.gnash filename.swf    # use gnash
+```
+The setup is much easier than using docker, hats off to Remy!
