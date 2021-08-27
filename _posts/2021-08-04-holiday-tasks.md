@@ -63,4 +63,92 @@ Svuotate completamente la cache di Windows Update. Questa procedura è sicura. L
 
 Non è necessario riavviare manualmente i servizi di cui sopra.
 
+## 5.) Rimozione file temporanei con Bleachbit
+
+Normalmente non ci sarebbe ragione di ricorrere a strumenti come Bleachbit. Tuttavia questo ci rende molto facile e veloce il compito di ridurre il numero di file che l'antivirus deve scansionare. Preferisco non indicare ciascuna directory da pulire per farlo a mano.
+
+1. Scarica ed installa [Bleachbit](https://www.bleachbit.org/)
+2. Lancia Bleachbit
+3. Spunta le seguenti opzioni:
+    1. Flash > Everything
+    2. Internet Explorer > Everything
+    3. System > Logs
+    4. System > Memory dumps
+    5. System > Recycle bin
+    6. System > Temporary files
+4. Lancia la pulizia (clean)
+
+Quando cleanmgr e Bleachbit hanno finito, **RIAVVIA**.
+
+# BREAK 2 - Riavvia prima di procedere con quanto segue
+
+## 6.) Scansione veloce con antivirus
+
+Lanciate la seguente anche se si ha un antivirus. Questi sono strumenti semplici per una scansione veloce.
+A questo punto, **disattivate temporaneamente il vostro antivirus** o rimuovetelo finchè non avete terminato di seguire questa guida.
+
+1. [Microsoft Safety Scanner](https://www.microsoft.com/security/scanner/en-us/default.aspx) - Questo è un antivirus senza installazione in un unico EXE (un unico eseguibile, ndt) direttamente da Microsoft. Lanciate una scansione veloce (quick scan). Dovrebbero bastare 10 minuti. Il file pesa circa 160 MB al momento della pubblicazione.
+2. [Kaspersky Virus Removal Tool](https://www.kaspersky.com/downloads/thank-you/free-virus-removal-tool?form=1)
+
+## 7.) Controllo e rimozione di malware o software spazzatura
+
+Usate questi strumenti se avete il sospetto che il computer non sia pulito o se ha avuto una infezione in passato.
+
+1. [MalwareBytes AdwCleaner](https://www.malwarebytes.com/adwcleaner/) è uno strumento poco conosciuto ma molto efficace per rimuovere quelle piccole cose che insidiano un computer. Controllate con cura le raccomandazioni che vi si presentano prima di accettarle. Necessita di un riavvio dopo l'uso.
+
+2. [MalwareBytes Anti-Malware](https://www.malwarebytes.com/) è il mio strumento di pulizia automatica più gettonato per la pulizia da software malevolo e contro cambiamenti non desiderati del sistema. Se l'utente del computer tende ad installare software di dubbia origine, considerate di acquistare la versione Premium.
+
+3. [Google Chrome Cleanup Tool](https://www.google.com/chrome/cleanup-tool/) è un piccolo strumento da Google che usa il motore antivirus ESET per rimuovere software spazzatura. Non è necessario resettare Chrome se non pensate che sia rotto o rovinato.
+
+## 8.) Controllo di Windows Update e Firewall
+
+Un classico segnale di infezione è se le seguenti impostazioni non possono essere abilitate o non funzionano. Sistematele.
+
+1. _Start_ > scrivete "Windows Update" > Invio
+
+    Controllate gli aggiornamenti. Se non funziona, prendete nota e continuate.
+2. _Start_ > scrivete "Windows Firewall" > Invio
+
+    Assicuratevi che sia attivo o che dica di essere gestito da un altro programma. Se desiderate tenerlo spento, almeno assicuratevi che si accenda se lo attivate.
+    Se non funziona, prendete nota e continuate.
+
+- Se non funziona Windows Update, riparatelo con [Microsoft Windows Update FixIt tool](https://aka.ms/diag_wu).
+- Se non funziona Windows Firewall, riparatelo con [Microsoft Windows Firewall FixIt tool](https://support2.microsoft.com/mats/windows_firewall_diagnostic/).
+
+Se nessuno dei precedenti funziona, potete provare [Windows services repair tool](http://download.webroot.com/wsvcscan.exe) di [Webroot](http://www.webroot.com/) o il [Services repair tool](http://www.wintips.org/how-to-restore-windows-services-to-their-default-state/) di [ESET](https://www.eset.com/).
+
+## 9.) DISM RestoreHealth (Windows 8 e successivi)
+
+Questo comando scansionerà il sistema alla rierca di componenti Windows corrotti, e cercherà di ripararli. Ci vorranno 20 minuti.
+
+1. Start > scrivete "cmd.exe" > premete Ctrl + Shitf + Invio
+2. Apparirà una finestra nera
+3. Scrivete "dism /Online /Cleanup-Image /RestoreHealth"
+4. Se il testo (in inglese) dice che è stato riparato qualcosa, riavviate il computer.
+
+## 10.) Installate gli aggiornamenti di Windows e configurate l'aggiornamento automatico
+
+Controllate gli aggironamenti e assicuratevi siano impostati per l'aggiornamento automatico.
+
+Se ci sono problemi ad installare gli aggiornamente, provate i passi di seguito. Sfortunatamente ci sono situazione per cui Windwos non può essere ragionevolmente riparato. Tuttavia da Windows 8 in avanti c'è il comando DISM a disposizione per riparare la maggior parte delle corruzioni se ce ne fosse bisogno.
+
+### Se gli aggiornamenti falliscono Step 0 - Procedura Microsoft
+
+Microsoft mantiene una [procedura guidata di riparazione](https://support.microsoft.com/en-us/help/10164/fix-windows-update-errors) per aiutarvi a sistemare gli errori di Windows. Siccome sono l'azienda autore di Windows, dovreste prima seguire le loro procedure.
+
+### Se gli aggiornamenti falliscono Step 1 - Microsoft FixIt
+
+Lanciate lo [strumento di riparazione Windows Update](https://support.microsoft.com/it-it/windows/strumento-di-risoluzione-dei-problemi-di-windows-update-per-windows-10-19bc41ca-ad72-ae67-af3c-89ce169755dd) e riavviate.
+
+### Se gli aggiornamenti falliscono Step 2 - Controllo dell'integrità dei file di sistema
+
+1. Start > scrivete "cmd.exe" > premete Ctrl+Shift+INvio per avviare come Administrator
+2. Apparirà una finestra nera
+3. Scrivete "dism /online /cleanup-image /restorehealth" senza i doppi apici e premete Invio (non funziona su Windows 7)
+4. Scrivete "sfc /scannow" senza i doppi apici e premete Invio. Quanto ha finito continuate al passo successivo.
+5. Riavviate e ricontrollate gli aggiornamenti di Windows.
+
+### Se gli aggiornamenti falliscono Step 3 - Microsoft FixIt (solo Windows 7)
+
+Se avete Windows 7, segutie le istruzioni per scaricare ed eseguire [Microsoft Fixit 50202](https://go.microsoft.com/?linkid=9665683) (link rotto al 2021-08-27).
 
