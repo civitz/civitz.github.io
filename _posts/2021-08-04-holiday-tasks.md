@@ -152,3 +152,61 @@ Lanciate lo [strumento di riparazione Windows Update](https://support.microsoft.
 
 Se avete Windows 7, segutie le istruzioni per scaricare ed eseguire [Microsoft Fixit 50202](https://go.microsoft.com/?linkid=9665683) (link rotto al 2021-08-27).
 
+### Se gli aggiornamenti falliscono Step 4 - Ripristino di catroot2 e componenti di Windows Update
+
+1. [Ripristinate la cartella catroot2](http://www.thewindowsclub.com/catroot-catroot2-folder-reset-windows) (mi raccomando cancellate il contenuto, non la cartella!)
+2. Scaricate ed estraete il "Reset Windows Update Tool" in una cartella del vostro desktop (link rotto al 2021-08-27, provare con [https://docs.microsoft.com/en-us/windows/deployment/update/windows-update-resources](https://docs.microsoft.com/en-us/windows/deployment/update/windows-update-resources) per windows 10)
+3. Tasto destro su _ResetWUEng.cmd_ > Esegui come _amministratore_
+4. Selezionare opzioni 2, 5, 8, 9, 10, 12, riavviate, poi verificare se la presenza di aggiornamenti windows
+
+### Se gli aggiornamenti falliscono Step 5 - Controllare se esistono soluzioni a problemi noti
+
+Controllate questa pagina di Microsoft Answers se comprende il vostro codice di errore o sintomi e seguite le istruzioni:
+[How to: Troubleshoot Common Setup and Stop Errors](https://answers.microsoft.com/en-us/insider/wiki/insider_wintp-insider_install/how-to-troubleshoot-common-setup-and-stop-errors/324d5a5f-d658-456c-bb82-b1201f735683)
+
+### Se gli aggiornamenti falliscono Step 6 - Strumento Microsoft SUR (solo Windows 7)
+
+1. Scaricate ed installate [Microsoft System Update Readiness Tool](https://www.microsoft.com/en-us/download/details.aspx?id=20858). (Windows 7 only) (link rotto al 2021-08-27)
+2. Cercate la sezione 21 a in fondo, "Install Windows 7 hotfix rollup"
+
+### Se gli aggiornamenti falliscono Step 7 - Controllo del disco con chkdsk
+
+Controllate se il vostro disco rigido presenta problemi.
+
+1. Start > scrivete "cmd.exe" > Ctrl-Shift-Invio (esegui come amministratore)
+2. Apparrirà una finestra nera, il prompt dei comandi
+3. Scrivete "chkdsk /r" senza doppi apici.
+4. Premete "y" (o "s" in italiano) e premete Invio
+5. Riavviate il computer
+6. Ritornate al "Se gli aggiornamenit falliscono Step 1" se il controllo disco ripara qualcosa del vostro disco
+
+### Se gli aggiornamenti falliscono Step 8 - Rimozione antivirus e reset componenti di rete
+
+Disinstallate il vostro antivirus, riavviate, e [seguite le seguenti istruzioni](https://www.hanselman.com/blog/TheNuclearOptionResettingTheCrapOutOfYourNetworkAdaptersInVista.aspx). Tenete a mente che dovrete reinstallare eventuali software tipo VPN dopo questa operazione. Se non sapete cosa sia una VPN, allora non dovete preoccuparvene.
+
+### Se gli aggiornamenti falliscono Step 9 - Aggiornamento driver
+
+Seguite la sezione 20 di questa guida.
+
+### Se gli aggiornamenti falliscono Step 10 - CheckSUR.log
+
+Questo vale solo per Windows 7, ed è estremamente raro che ce ne sia bisogno. Avviso: questa sezione è altamente tecnica.
+
+1. Prima di tutto lanciate una scansione per stabilire la salute del disco con [WinDlg](http://download.wdc.com/windlg/WinDlg_v1_29.zip) di Western Digital
+2. Seguite questa guida [https://support.microsoft.com/en-us/kb/2700601](https://support.microsoft.com/en-us/kb/2700601)
+
+### Se gli aggiornamenti falliscono Step 11 - Modificate la sezione COMPONENTS
+
+1. Start > scrivete "cmd.exe" > Ctrl-Shift-Invio (esegui come amministratore)
+2. Apparrirà una finestra nera, il prompt dei comandi
+3. Scrivete i seguenti comandi e premete invio dopo ciascuno:
+    - `REG LOAD HKLM\COMPONENTS C:\Windows\System32\config\COMPONENTS`
+    - `REG DELETE HKLM\COMPONENTS /V PendingRequired`
+4. Riavviate e controllate gli aggiornamenti di windows.
+
+([Fonte - Karen Hu](https://social.technet.microsoft.com/Forums/windows/en-US/8d63fe26-5e33-4c5e-ab4c-e19611aa95a7/update-install-error-0x80070308?forum=w7itproinstall))
+
+## 11.) Scansione veloce con SecureAnywhere System Analyzer
+
+[SecureAnywhere System Analyzer](http://anywhere.webrootcloudav.com/zerol/syswranalyzer.exe) di [Webroot](http://www.webroot.com/) fa una scansione veloce di processi e parti importanti del sistema per oggetti catalogati come malevoli nel "cloud". Il suo passaggio attiva virus e programmi spazzatura, e non pulisce, quindi normalmente volete lanciarlo dopo che avete fatto un po' di pulizia. Serve solo a raccogliere informazioni per la vostra diagnosi.
+
