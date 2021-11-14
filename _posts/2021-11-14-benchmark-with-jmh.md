@@ -13,7 +13,7 @@ tags:
 I was reviewing a piece of code for a template renderer lately, and noticed something was a little bit off.
 A template renderer is used to make personalized documents given a fixed text (the template) and a set of parameters.
 
-For example: if we want to send postcards to 1000 friends, and the text is the same a part from the name we can make one template text with a placeholder text in it in place of the name. The template's placeholders usually follow a convention, for example if we want to make personalized documents with `Hello name` inside, where `name` is changed for every person we want to send this document, then the template will be something like `Hello [name], ...`
+For example: if we want to send postcards to 1000 friends, and the text is the same a part from the name we can make a template with a placeholder text in it in place of the name. The template's placeholders usually follow a convention, for example if we want to make personalized documents with `Hello name` inside, where `name` is changed for every person we want to send this document, then the template will be something like `Hello [name], ...`
 
 A template renderer is an algorithm which takes a template (a string with token or placeholders) and some parameters (a map of string to string) and returns a rendered text (also a string). In the rendered text the algorithm:
 - replaces every matched placeholder with the parameters value (e.g. every occurrence of `[name]` with `John`)
@@ -47,7 +47,7 @@ So I was reviewing a template renderer, and the code did not look very performan
 The *de facto* standard of benchmarks in the Java world is JMH - [Java Microbenchmark Harness](https://github.com/openjdk/jmh).
 JMH is a tool to build code benchmarks that accounts for some peculiarities of the JVM (Java Virtual Machine), such as compiler optimizations, bytecode optimizations, and JIT (Just In Time) optimizations.
 
-Suppose we have a sample *naive* algorithm that accepts square brackets (`[` and `]`) as placeholder indicator in template - please not that in our sample we use the VAVR library:
+Suppose we have a sample *naive* algorithm that accepts square brackets (`[` and `]`) as placeholder indicator in template - please note that in our sample we use the VAVR library:
 ```java
 public static String naiveRegexReplace(String template, Map<String, String> values) {
     return values.foldLeft(template, (replaced, kv) -> replaced.replaceAll("\\[[\\s]*" + kv._1 + "[\\s]*\\]", kv._2));
