@@ -210,3 +210,26 @@ Questo vale solo per Windows 7, ed è estremamente raro che ce ne sia bisogno. A
 
 [SecureAnywhere System Analyzer](http://anywhere.webrootcloudav.com/zerol/syswranalyzer.exe) di [Webroot](http://www.webroot.com/) fa una scansione veloce di processi e parti importanti del sistema per oggetti catalogati come malevoli nel "cloud". Il suo passaggio attiva virus e programmi spazzatura, e non pulisce, quindi normalmente volete lanciarlo dopo che avete fatto un po' di pulizia. Serve solo a raccogliere informazioni per la vostra diagnosi.
 
+## 12.) Pulizia di WinSxS con ResetBase (Windows 8+)
+
+Questa procedura di pulizia va più a fondo del comando che abbiamo lanciato all'inizio. Dovevamo essere sicuri che il sistema fosse funzionante prima di fare pulizia di vecchi file di Windows. [Clicca qui per spiegazione tecnica su cosa avviene.](https://msdn.microsoft.com/en-us/windows/hardware/commercialize/manufacture/desktop/clean-up-the-winsxs-folder)
+
+1. Start > type `cmd.exe` > Ctrl-Shift-Invio (esegui come amministratore)
+2. Scrivete: `Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase`
+3. Invio
+
+## 13.) Controllo dell'account utente al massimo
+
+**Ascoltatemi**. O ascoltate uno dei [programmatori Microsoft più esperti](https://blogs.msdn.microsoft.com/oldnewthing/20160816-00/?p=94105). UAC (controllo account utente) è un sistema importante che ha impatti profondi nel sistema, in aree che normalmente non sono visibili. Non è come l'imballaggio con le bolle da togliere prima dell'uso. Esiste per ragioni importante, non è *cool* toglierlo.
+
+[Segui queste istruzioni](https://www.tenforums.com/tutorials/3577-change-user-account-control-uac-settings-windows-10-a.html) (o [segui queste per istruzioni in italiano](https://support.microsoft.com/it-it/topic/guida-interattiva-regolare-le-impostazioni-di-controllo-dell-account-utente-in-windows-7-e-windows-8-605f891d-42c5-2b93-4b4b-e4c5d4d35f60), ndt) per impostare UAC al massimo, o "Notifica sempre". Qualsiasi valore minore permeterebbe ai malware di eseguire istantaneamente operazioni con privilegi di amministrazione. UAC non è magia, è uno livello di protezione che volete usare.
+
+## 14.) Abilitare SmartScreen (Windows 8+)
+
+Questo strumento verifica assieme a Microsoft e avvisa l'utente nel caso si scarichi ed esegua dei programmi non comunemente usati. Questo controllo previene la maggior parte delle infezioni originate da mail fasulle a meno che l'utente non scelga di procedere nonostante l'avviso di cautela.
+
+1. Start > Scrivete `SmartScreen` (o `Protezione basata sulla reputazione` nelle versioni italiane, ndt) > Clicca "Cambia impostazioni SmartScreen" (in versioni successive si dovrebbe arrivare già sulla schermata con le impostazioni di SmartScreen, ndt)
+2. Sulla sinistra, clicca "Cambia impostazioni Windows SmartScreen"
+3. Seleziona "Chiedi approvazione dell'amministratore" (Windows 8) o "Controlla app e file" (Windows 10)
+
+Nota del traduttore: aggiornamenti recenti di windows hanno cambiato nomenclatura e abilitato nuove funzioni di SmartScreen, se si entra su "Protezione basata sulla reputazione" il consiglio è abilitare tutte le funzioni. Ogni selettore abilita una variante di SmartScreen focalizzata su diverse categorie di file e programmi. Come indicato sopra, questi controlli prevengono infezioni da programmi malevoli.
