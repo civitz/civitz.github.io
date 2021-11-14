@@ -82,13 +82,94 @@ public static class AllMatched10AverageText {
     }
 }
 ```
+The code above generates a template with 10 placeholders, evenly spaced with text, for a total of around 3.5KB of text. Then it also generate 10 values for the placeholder text, so that all placeholders have a matched value. This represents an average case for, say, an email.
 
 Now for the actual benchmark:
 ```java
 @Benchmark
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
 public void _10_args_averageCase_naiveRegex(AllMatched10AverageText torender, Blackhole blackhole) {
     blackhole.consume(TemplateRenderers.naiveRegexReplace(torender.template, torender.values));
 }
 ```
 Notice the `Blackhole` usage: if the compiler detects that we make no use of a certain result, and it can determine that it can delete code, then our benchmark would measure nothing. To avoid this we can use the Blackhole, which consumes the result, so that the compiler will not optimize our code away.
 
+We can run the benchmark by running the default `main` method.
+The results are shown in the coonsole like the following (text has been modified to fit this post):
+
+```
+Benchmark                                    Mode  Cnt    Score    Error  Units
+MyBenchmark._10_args_averageCase_naiveRegex  avgt    6  224,164 ±  8,813  us/op
+```
+
+Well, now we have a baseline! We can now work on a different algorithm. For the specific case we noticed that the string is being duplicated over and over for each round of `replaceAll`. We implemented a windowed/scrolling template renderer, you can see the code below:
+```java
+public static String scrolling(String template, Map<String, String> values) {
+    int pendingBracketPos = -1;
+    StringBuilder buffer = new StringBuilder(template.length());
+    for (int pos = 0; pos < template.length(); pos++) {
+        char c = template.charAt(pos);
+        if (c == '[') {
+            if (pendingBracketPos != -1) {
+                buffer.append(template, pendingBracketPos, pos);
+            }
+            pendingBracketPos = pos;
+        } else if (c == ']') {
+            if (pendingBracketPos == -1) {
+                buffer.append(c);
+            } else {
+                String possibleKey = template.substring(pendingBracketPos + 1, pos).trim();
+                Option<String> possibleValue = values.get(possibleKey);
+                if (possibleValue.isDefined()) {
+                    buffer.append(possibleValue.get());
+                } else {
+                    buffer.append(template, pendingBracketPos, pos + 1);
+                }
+                pendingBracketPos = -1;
+            }
+        } else if (pendingBracketPos == -1) {
+            buffer.append(c);
+        }
+    }
+    return buffer.toString();
+}
+```
+
+We now have two different algorithms we can compare between, so let's do it! Add another benchmark:
+```java
+@Benchmark
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
+public void _10_args_averageCase_scrolling(AllMatched10AverageText torender, Blackhole blackhole) {
+    blackhole.consume(TemplateRenderers.scrolling(torender.template, torender.values));
+}
+```
+
+Now we can compare the two results by running another time the benchmark:
+```
+Benchmark                                    Mode  Cnt    Score    Error  Units
+MyBenchmark._10_args_averageCase_naiveRegex  avgt    6  224,164 ±  8,813  us/op
+MyBenchmark._10_args_averageCase_scrolling   avgt    6   40,114 ±  1,729  us/op
+```
+
+Well, that's a speedup of ~5x!
+
+Now you've seen the basis of JMH performance testing, you can further test your algorithms' performance by:
+- adding different combination of data
+- confronting more algorithms together
+- changing the benchmark parameters such as:
+  + warmup runs to trigger JIT optimizations
+  + forks to run the test on multiple instance of the same JVM to account for slight context variations between runs (e.g. cpu power state, background activity, memory paging situation,etc...)
+  + measurement iterations
+  + garbage collection
+  + profiling
+
+We added a full example in the [java experiments repo](https://github.com/civitz/java-experiments), you can see the code (with tests!) [here](https://github.com/civitz/java-experiments/tree/master/src/main/java/io/github/civitz/java/experiments/templater).
+The repo also contains:
+- an even more optimized version of the `scrolling` algorithm
+- the possibility to generate a runnable jar to run the benchmark as a standalone app
+- more benchmark cases
+- unit tests for all the algorithms
+
+Have a nice performance testing!
