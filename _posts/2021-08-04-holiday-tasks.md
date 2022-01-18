@@ -10,7 +10,7 @@ Trovate il suo lavoro presso [https://decentsecurity.com]()**
 
 __[Pagina aggiornata l'ultima volta il 2022-01-18]__
 
-> "Faccio del mio meglio per rendere tutto questo il più facile possibil,e ma ci sono diverse tecniche avanzate in questa guida rispetto al resto del sito"
+> "Faccio del mio meglio per rendere tutto questo il più facile possibile, ma ci sono diverse tecniche avanzate in questa guida rispetto al resto del sito"
 
 Questa è una guida alla risoluzione di problemi e manutenzione per Windows 7 e successivi. Vi aiuterà inoltre a rimuovere molti virus e riparare i danni causati da essi. Queste procedure possono essere d'aiuto per macchine anche piuttosto vecchie. Se il tuo computer è una macchina di lavoro, chiedete consiglio al vostro referente tecnico IT prima di procedere.
 
