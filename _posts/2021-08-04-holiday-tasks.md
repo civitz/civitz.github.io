@@ -236,7 +236,7 @@ Nota del traduttore: aggiornamenti recenti di windows hanno cambiato nomenclatur
 
 ## 15.) Pulizia e re-inizializzazione del servizio di ricerca di Windows (Windows Search)
 
-Windows ha un sistema integrato di ricerca e indicizzazione chiamato Windows Search e per utenti con grandi quantità di dati i file di indice possono raggiungere dimensioni di diversi gigabyte. Inoltre Windows Search può occasionalmente corrompersi. Normalmente il servizio si fa manutenzione in autonomia, ma è possibile "resettarlo" al bisogno. La pulizia può liberare anche un gigabyte o più specie se si usa molto Outlook. Questa pulizia va oltre il normale comando di re-indicizzazione di Windows Search, che personalmente trovo poco efficace (a detta dell'autore, ndr).
+Windows ha un sistema integrato di ricerca e indicizzazione chiamato Windows Search e per utenti con grandi quantità di dati i file di indice possono raggiungere dimensioni di diversi gigabyte. Inoltre Windows Search può occasionalmente corrompersi. Normalmente il servizio si fa manutenzione in autonomia, ma è possibile "resettarlo" al bisogno. La pulizia può liberare anche un gigabyte o più specie se si usa molto Outlook. Questa pulizia va oltre il normale comando di re-indicizzazione di Windows Search, che personalmente trovo poco efficace (a detta dell'autore, ndt).
 
 Questa procedura non è documentata, l'ho imparata dopo ore di ricerca e diagnosi su svariate istanze di Outlook con problemi di ricerca.
 
@@ -245,7 +245,7 @@ Questa procedura non è documentata, l'ho imparata dopo ore di ricerca e diagnos
    1. `net stop WSearch`
    2. `RD /S /Q "C:\ProgramData\Microsoft\Search"`
    3. `regedit`
-3. In Regedit, trovate e cancellate le seguenti chiavi e cartelle (aiutetevi con la ricerca, ndr):
+3. In Regedit, trovate e cancellate le seguenti chiavi e cartelle (aiutetevi con la ricerca, ndt):
    - Sotto "Current User": `HKEY_CURRENT_USER\Software\Microsoft\Windows Search`
    - Poi, sotto "Local Machine": `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Search\SetupCompletedSuccessfully`
 
@@ -292,4 +292,4 @@ Riporteremo Internet Explorer alle sue impostazioni predefinite. Non è un reset
 
 1. [Esportate i preferiti di  Internet Explorer](https://kb.wisc.edu/helpdesk/page.php?id=1419)
 2. Internet Explorer > Premere Alt > Strumenti > Opzioni Internet > Avanzate > Reset
-3. Selezionate "Elimina impostazioni personalizzate" (la traduzione esatta potrebbe essere leggermente diversa, ndr) > Ok
+3. Selezionate "Elimina impostazioni personalizzate" (la traduzione esatta potrebbe essere leggermente diversa, ndt) > Ok
