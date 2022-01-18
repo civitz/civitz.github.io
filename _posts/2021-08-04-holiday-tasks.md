@@ -8,7 +8,7 @@ Trovate il suo lavoro presso [https://decentsecurity.com]()**
 
 ** Questa pagina è in costruzione **
 
-__[Pagina aggiornata l'ultima volta il 2019-07-28]__
+__[Pagina aggiornata l'ultima volta il 2022-01-18]__
 
 > "Faccio del mio meglio per rendere tutto questo il più facile possibil,e ma ci sono diverse tecniche avanzate in questa guida rispetto al resto del sito"
 
@@ -233,3 +233,63 @@ Questo strumento verifica assieme a Microsoft e avvisa l'utente nel caso si scar
 3. Seleziona "Chiedi approvazione dell'amministratore" (Windows 8) o "Controlla app e file" (Windows 10)
 
 Nota del traduttore: aggiornamenti recenti di windows hanno cambiato nomenclatura e abilitato nuove funzioni di SmartScreen, se si entra su "Protezione basata sulla reputazione" il consiglio è abilitare tutte le funzioni. Ogni selettore abilita una variante di SmartScreen focalizzata su diverse categorie di file e programmi. Come indicato sopra, questi controlli prevengono infezioni da programmi malevoli.
+
+## 15.) Pulizia e re-inizializzazione del servizio di ricerca di Windows (Windows Search)
+
+Windows ha un sistema integrato di ricerca e indicizzazione chiamato Windows Search e per utenti con grandi quantità di dati i file di indice possono raggiungere dimensioni di diversi gigabyte. Inoltre Windows Search può occasionalmente corrompersi. Normalmente il servizio si fa manutenzione in autonomia, ma è possibile "resettarlo" al bisogno. La pulizia può liberare anche un gigabyte o più specie se si usa molto Outlook. Questa pulizia va oltre il normale comando di re-indicizzazione di Windows Search, che personalmente trovo poco efficace (a detta dell'autore, ndr).
+
+Questa procedura non è documentata, l'ho imparata dopo ore di ricerca e diagnosi su svariate istanze di Outlook con problemi di ricerca.
+
+1. Start > Scrivete `cmd.exe` > Premete Ctrl-Shift-Invio (esegui come amministratore)
+2. Dare i seguenti comandi e premere Invio dopo ciascuno:
+   1. `net stop WSearch`
+   2. `RD /S /Q "C:\ProgramData\Microsoft\Search"`
+   3. `regedit`
+3. In Regedit, trovate e cancellate le seguenti chiavi e cartelle (aiutetevi con la ricerca, ndr):
+   - Sotto "Current User": `HKEY_CURRENT_USER\Software\Microsoft\Windows Search`
+   - Poi, sotto "Local Machine": `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Search\SetupCompletedSuccessfully`
+
+## 16.) Pulizia e aggiornamento browser
+
+**Verificate manualmente che ogni browser che utilizzate sia alla sua ultima versione**
+
+Se l'utente è prono a infettarsi con malware o altri programmi che prendono possesso del computer, o ad avere problemi di performance con i browser, probabilmente è il caso di cancellare la cache e resettare le impostazioni. In altri casi questo potrebbe risultare esagerato. Questi di seguito sono le modalità più semplici per reimpostare i browser, ma almeno sarete sicuri che il sistema sarà pulito.
+**NOTA**: Queste procedure cancellano tutte le password e altri dati salvati.
+
+### Microsoft Edge
+
+Al momento non ho esperienza sul campo in merito a virus con questo browser, non ho suggerimenti.
+
+### Google Chrome
+
+Reimposteremo Chrome da zero.
+
+1. [Esportare i preferiti di Chrome](https://support.google.com/chrome/answer/96816?hl=it)
+2.   [Disinstallate Google Chrome](https://support.google.com/chrome/answer/95319?hl=it).
+3. Start > Scrivete `%AppData%` > Premete Invio. Cancellate la cartella "Google".
+4. Start > Scrivete `%AppDataLocal%` > Premete Invio. Cancellate la cartella "Google".
+5. Cancellate la cartella `C:\Program Files (x86)\Google\Chrome`
+6. Start > Scrivete `regedit.exe` > Premete Invio. Cancellate le chiavi `HKCU\Software\Policies\Google` e `HKLM\Software\Policies\Google`
+7. Installate Google Chrome con l'[installer aziendale 64-bit MSI](https://cloud.google.com/chrome-enterprise/browser/download/) (scorrete in basso nella pagina). Potete installarlo anche normalmente se volete. Non vi serve aiuto per questo.
+8. [Reimportate i preferiti di Chrome](https://support.google.com/chrome/answer/96816?hl=it).
+
+### Mozilla Firefox
+
+Reimposteremo Firefox da zero.
+
+1. [Esportate i preferiti di Firefox](https://support.mozilla.org/it/kb/Esportare%20i%20segnalibri%20in%20Internet%20Explorer).
+2. Disinstallate Mozilla Firefox
+3. Start > Scrivete `%AppData%\Mozilla` > Premete Invio. Cancellate la cartella "Firefox".
+4. Start > Scrivete `regedit.exe` > Premete Invio.Cancellate le chiavi `HKCU\Software\Policies\Mozilla` e `HKLM\Software\Policies\Mozilla`
+5. Cancellate la cartella "Mozilla Firefox" sotto `C:\Program Files` e `C:\Program Files (x86)`
+6. [Installate Firefox dal sito di Mozilla](https://www.mozilla.org/it/firefox/new/).
+7. [Reimportate i preferiti in Firefox](https://support.mozilla.org/it/kb/Esportare%20i%20segnalibri%20in%20Internet%20Explorer).
+
+### Internet Explorer
+
+(Questa procedura andrebbe rivista perchè Microsoft ormai installa e raccomanda solo Edge e la sua modalità compatibilità, vi lascio la traduzione per comodità. ndr)
+Riporteremo Internet Explorer alle sue impostazioni predefinite. Non è un reset al 100% ma ci si avvicina. Assicuratevi di avere Internet Explorer in versione 11. Per sicurezza faremo un backup dei preferiti (è una storia lunga, fidatevi).
+
+1. [Esportate i preferiti di  Internet Explorer](https://kb.wisc.edu/helpdesk/page.php?id=1419)
+2. Internet Explorer > Premere Alt > Strumenti > Opzioni Internet > Avanzate > Reset
+3. Selezionate "Elimina impostazioni personalizzate" (la traduzione esatta potrebbe essere leggermente diversa, ndr) > Ok
