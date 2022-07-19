@@ -1,0 +1,3 @@
+- jwt as mean to authenticate within microservice arch
+- histroy of me misunderstanding the concept
+- the joy of not having a fake session inside the arch
