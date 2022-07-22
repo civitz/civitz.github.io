@@ -4,7 +4,7 @@ layout: post
 title: JWT for service-to-service auth
 ---
 
-Microservice architecture has been around for years now, and I thing it's here to stay.
+Microservice architecture has been around for years now, and I think it's here to stay.
 The approach has many advantages, but it brings some challenges along the way. One of which is authentication/authorization.
 
 Authentication and authorization are two very distinct concerns that are often treated together, expecially if the information used to verify them is the same (for example a username or a session identifier). From now on we will refer to both terms together as "auth".
