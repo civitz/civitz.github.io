@@ -9,9 +9,9 @@ The approach has many advantages, but it brings some challenges along the way. O
 
 Authentication and authorization are two very distinct concerns that are often treated together, expecially if the information used to verify them is the same (for example a username or a session identifier). From now on we will refer to both terms together as "auth".
 
-In this little essay we consider a web-facing application with a microservice architecture, we assume we have a cluster where internal connectivity is not exposed, and we also have one or more services that are exposedon the internet as part of their responsibility.
+In this little essay we consider a web-facing application with a microservice architecture, we assume we have a cluster where internal connectivity is not exposed, and we also have one or more services that are exposed on the internet as part of their responsibility.
 
-In this context one would think that after the outermost services handles auth, then the auth problem "disappears" within microservices' network. This would result in inner services having no auth, meaning integration would be very easy. It would also let everyone within the network to access data and invoke procedures without any check. This scenario assumes good intentions, so a misconfigured process or a bad actor could access or change data from within the network.
+In this context one would think that after the outermost services handle auth, then the auth problem "disappears" within microservices' network. This would result in inner services having no auth, meaning integration would be very easy. It would also let everyone within the network to access data and invoke procedures without any check. This scenario assumes good intentions, so a misconfigured process or a bad actor could access or change data from within the network.
 
 One way to partially deal with the unlimited access is acting at the network level by either firewall rules, network policies in kubernetes, or by solutions like a service mesh.
 Another approach would be to authenticate each and every request even _within_ the cluster. And here is where JWT shines!
@@ -54,9 +54,9 @@ There are added benefits of JWT:
 
 Limitations:
 - you need to configure your gateway (or web-facing server) to create the JWT
-- you need an infrastructure to handle certificates, altough with solutions like letsencrypt this is becoming easier to do
-- any process that initiates calls to JWT-protected services from within the cluster has to either pass through an API gateway or have a mean to create a trusted JWS by itself
-- since claims can be personalized and JWT does not have a fixed schema, you need to agree on the actual combination of claims you use
+- you need an infrastructure to handle certificates, although with solutions like letsencrypt this is becoming easier to do
+- any process that initiates calls to JWT-protected services from within the cluster has to either pass through an API gateway or have a mean to create a trusted JWT by itself
+- since claims can be personalized and JWT does not have a fixed schema, you need to agree on the actual combination of claims you want to use
 
 I would also add that JWT are not limited to a microservice environment. The standard is agnostic and has been successfully used:
 - as a soft replacement for HTTP session in frontend-backend communication
