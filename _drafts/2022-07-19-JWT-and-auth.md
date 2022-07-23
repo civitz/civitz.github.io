@@ -16,12 +16,17 @@ In this context one would think that after the outermost services handle auth, t
 One way to partially deal with the unlimited access is acting at the network level by either firewall rules, network policies in kubernetes, or by solutions like a service mesh.
 Another approach would be to authenticate each and every request even _within_ the cluster. And here is where JWT shines!
 
-[JWT](https://jwt.io/) - or JSON Web Token - is a [not-so-new standard](https://tools.ietf.org/html/rfc7519)  that is used to represent (or be) auth. It consists in a [JSON](https://www.json.org) object with conventions on fields and also customizable fields, which is then encoded in a standard way. The encoding happens to be compatible with HTTP headers, which is convenient because it will be the way we use it. JWT is also optionally signed (JWS - JWT signed) and/or encrypted (JWE - JWT encrypted).
+[JWT](https://jwt.io/) - or JSON Web Token - is a [standardized](https://tools.ietf.org/html/rfc7519) tool to carry data over the network, expecially over HTTP. It consists in a [JSON](https://www.json.org) object with conventions on fields and also customizable fields, which is then encoded with Base64URL. The encoding happens to be compatible with HTTP headers, which is convenient because it will be the way we use it. JWT is also optionally signed (JWS - JWT signature) and/or encrypted (JWE - JWT encryption).
 
-More in depth, a JWT is composed of two or three JSON objects:
+More in depth, a JWT is composed of two or more JSON objects:
 - a header object which describes the token type and optional sign and encryption algorithms
 - a payload object containing data
 - an optional signature object
+- one or more encryption objects depending on the chosen algorithm
+
+The header object has standard fields:
+- type (typ) represents the type of token, it can be a mime type for or "JOSE"
+- algorythm (alg) optionally represents the signature or encryption algorithm. Note that **when type is encrypted/signed the algorithm can still be "none" and this renders the token unencrypted/unverifiable**
 
 The payload object has standard fields called "claims" for common concepts:
 - unique identifiers
@@ -34,6 +39,7 @@ The payload can be freely extended with custom claims, as long as they are repre
 
 So what does this bring to the context of microservices?
 Consider extending the original scenario: the outermost service verifies the auth of the caller, and also creates a JWT that represents the caller. It additionally sign the token, obtaining a JWS. Now you get a verifiable token that can be used to auth the request within all the internal calls inside the microservice architecture.
+In this scenario we only consider JWS (or JWE) because JWT by itself is easy to change, we need at least a signature to trust the caller.
 
 Other services should accept the call only if they:
 - verify the signature of the token
@@ -53,12 +59,15 @@ There are added benefits of JWT:
 
 
 Limitations:
-- you need to configure your gateway (or web-facing server) to create the JWT
+- you need to configure your gateway (or web-facing server) to create the JWS
 - you need an infrastructure to handle certificates, although with solutions like letsencrypt this is becoming easier to do
+- you need to whitelist accepted algorithms and issuers of JWT on each service
 - any process that initiates calls to JWT-protected services from within the cluster has to either pass through an API gateway or have a mean to create a trusted JWT by itself
 - since claims can be personalized and JWT does not have a fixed schema, you need to agree on the actual combination of claims you want to use
 
 I would also add that JWT are not limited to a microservice environment. The standard is agnostic and has been successfully used:
 - as a soft replacement for HTTP session in frontend-backend communication
 - as a format for information exchange between trusting parties
+- as part of OpenID Connect, a standardized mechanism to authenticate a user on a service via a third party identity provider
 
+I think JWT is a nice versatile tool to encode information. I really liked what this tiny JSON enables in a microservice environment, enhancing the security of a system without disrupting the protocols or affecting the developer experience.
