@@ -9,12 +9,16 @@ The approach has many advantages, but it brings some challenges along the way. O
 
 Authentication and authorization are two very distinct concerns that are often treated together, expecially if the information used to verify them is the same (for example a username or a session identifier). From now on we will refer to both terms together as "auth".
 
+## An example: microservice architecture
+
 In this little essay we consider a web-facing application with a microservice architecture, we assume we have a cluster where internal connectivity is not exposed, and we also have one or more services that are exposed on the internet as part of their responsibility.
 
 In this context one would think that after the outermost services handle auth, then the auth problem "disappears" within microservices' network. This would result in inner services having no auth, meaning integration would be very easy. It would also let everyone within the network to access data and invoke procedures without any check. This scenario assumes good intentions, so a misconfigured process or a bad actor could access or change data from within the network.
 
 One way to partially deal with the unlimited access is acting at the network level by either firewall rules, network policies in kubernetes, or by solutions like a service mesh.
 Another approach would be to authenticate each and every request even _within_ the cluster. And here is where JWT shines!
+
+## JSON Web Token
 
 [JWT](https://jwt.io/) - or JSON Web Token - is a [standardized](https://tools.ietf.org/html/rfc7519) tool to carry data over the network, expecially over HTTP. It consists in a [JSON](https://www.json.org) object with conventions on fields and also customizable fields, which is then encoded with Base64URL. The encoding happens to be compatible with HTTP headers, which is convenient because it will be the way we use it. JWT is also optionally signed (JWS - JWT signature) and/or encrypted (JWE - JWT encryption).
 
@@ -37,6 +41,8 @@ The payload object has standard fields called "claims" for common concepts:
 
 The payload can be freely extended with custom claims, as long as they are represented with standard JSON. A possible use of this is mapping capabilities of the authenticated entity, or carrying user information if JWT is used to represent a session.
 
+## Enhancing the example
+
 So what does this bring to the context of microservices?
 Consider extending the original scenario: the outermost service verifies the auth of the caller, and also creates a JWT that represents the caller. It additionally sign the token, obtaining a JWS. Now you get a verifiable token that can be used to auth the request within all the internal calls inside the microservice architecture.
 In this scenario we only consider JWS (or JWE) because JWT by itself is easy to change, we need at least a signature to trust the caller.
@@ -48,6 +54,8 @@ Other services should accept the call only if they:
 - check if token is still valid according to timestamp limits ("exp", "nbf" claims, see RFC)
 
 This is nothing new but the biggest advantages of JWT/JWS is that these verifications can happen without calling other services. In other words, properly crafted JWTs provide **stateless** authentication/authorization.
+
+## Final remarks and conclusion
 
 There are added benefits of JWT:
 - you can pass JWT along the next service in chained calls
