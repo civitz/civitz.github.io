@@ -1,2 +1,32 @@
-as per title.
-See if we can start from spring's pet store
+---
+
+---
+
+When designing an API one of the first question you need to answer is who is the user of the API and how does an API solves his problems.
+Once you defined your use case though, you need to define the API itself. One way to tackle the problem is to start coding the solution and rely on a library or tool to extract the API from the realized service. This approach is conventionally called "code first", meaning you first code the solution and then extract a formal definition of the API. Typical API definitions are OpenAPI, WSDL, or GraphQL.
+
+# API-first
+
+According to [Zalando's REST API design guide](https://opensource.zalando.com/restful-api-guidelines/#100) and [Thoughtworks tech radar](https://www.thoughtworks.com/radar), however, the preferred way to design an API is with an "API-first" approach.
+The API-first approach inverts the order of operations, meaning you first design your API directly in the formal definition, and then you code the service that serves the API (pun not intended).
+
+This approach makes sure that one can develop server, clients, and tests all at once, since they all starts with the same specification. But how do we do it? Let's see what tools we have in the Java world.
+
+# API-first quarkus server
+
+Suppose we have already defined an API in the form of OpenAPI. For simplicity and ease of comparison, we use the Spring classic example: the pet store. We gather the OpenAPI specification from their [online demo project](https://springdoc.org/#demos) ([direct link to openapi spec](158.101.191.70:8081/v3/api-docs/users), and then we need to generate the base code for our server.
+We have multiple options here:
+- if we are designing a server for a fixed API we may want to generate the project skeleton once and probably edit the generated files directly
+- if on the other hand we are currenty developing the API itself or we want to promptly fail the build when we change the API, we should generate only standard beans and service interfaces.
+What we will do for this example is the latter approach, and we will use two handy tools:
+- openapi official Java code generator tool and maven plugin
+- quarkus framework for developing fast cloud-native applications
+
+TODO:
+- maven snippet
+- native compile?
+- sample db?
+
+# Concusions
+
+After all this is what an API is: the API is the product, the documentation and the formal definition is their User Interface, the error codes and mode of interactions are the User Experience.
