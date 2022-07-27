@@ -14,19 +14,154 @@ This approach makes sure that one can develop server, clients, and tests all at 
 
 # API-first quarkus server
 
-Suppose we have already defined an API in the form of OpenAPI. For simplicity and ease of comparison, we use the Spring classic example: the pet store. We gather the OpenAPI specification from their [online demo project](https://springdoc.org/#demos) ([direct link to openapi spec](158.101.191.70:8081/v3/api-docs/users), and then we need to generate the base code for our server.
+Suppose we have already defined an API in the form of OpenAPI. For simplicity and ease of comparison, we use the classic example: the pet store. We gather the OpenAPI specification from their [OpenAPI sample catalog](https://github.com/OAI/OpenAPI-Specification/tree/main/examples/v3.0) ([direct link to OpenAPI spec](https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json), and then we need to generate the base code for our server.
 We have multiple options here:
 - if we are designing a server for a fixed API we may want to generate the project skeleton once and probably edit the generated files directly
 - if on the other hand we are currenty developing the API itself or we want to promptly fail the build when we change the API, we should generate only standard beans and service interfaces.
 What we will do for this example is the latter approach, and we will use two handy tools:
-- openapi official Java code generator tool and maven plugin
+- OpenAPI official Java code generator tool and maven plugin
 - quarkus framework for developing fast cloud-native applications
 
+Let's start!
+
+First, we assume we have the quarkus cli installed (use the great [SDKMAN!](https://sdkman.io/) if you want an easy install) and we start with a 
+```bash
+quarkus create app pro.robertopiva:api-first-pet-store \
+    --extension=resteasy-reactive-jackson,hibernate-validator
+cd api-first-pet-store
+```
+You can then remove the sample code and tests since we will replace them with generated code.
+Then we want to download the OpenAAPI spec for ease of use.
+```bash
+curl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore-expanded.json -o petstore.openapi.json
+# for a fancier version:
+curl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore-expanded.json | jq > petstore.openapi.json
+```
+And now we need a way to generate the rest interfaces and the java beans, so we configure the [OpenAPI maven generator plugin](https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin). The plugin itself is very general, and can be used in a variety of contexts. Generator classes are all listed in [https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages]() and configuration variables are also listed in [https://openapi-generator.tech/docs/generators/java]().
+
+For our case we will use:
+- jaxrs-spec generator (JavaJAXRSSpecServerCodegen) to generate only the java REST interfaces
+- of course generate models (java beans)
+- java 8-compatible dates
+- skip generation of swagger annotations (we start from openapi spec after all)
+- also skip supporting files (maven project), generated tests, generated documentation
+- skip authentication-related files
+
+The corresponding maven plugin XML is written below:
+
+```xml
+<plugin>
+    <groupId>org.openapitools</groupId>
+    <artifactId>openapi-generator-maven-plugin</artifactId>
+    <version>6.0.1</version>
+    <executions>
+        <execution>
+        <goals>
+            <goal>generate</goal>
+        </goals>
+        <configuration>
+            <inputSpec>${project.basedir}/petstore.openapi.json</inputSpec>
+            <generatorName>jaxrs-spec</generatorName>
+            <configOptions>
+            <dateLibrary>java8</dateLibrary>
+            <useSwaggerAnnotations>false</useSwaggerAnnotations>
+            <!--ensure we only generate java interfaces and no implementation skeleton-->
+            <interfaceOnly>true</interfaceOnly>
+            </configOptions>
+            <apiPackage>pro.robertopiva.api</apiPackage>
+            <modelPackage>pro.robertopiva.beans</modelPackage>
+            <generateModelTests>false</generateModelTests>
+            <generateModelDocumentation>false</generateModelDocumentation>
+            <generateSupportingFiles>false</generateSupportingFiles>
+            <generateApiTests>false</generateApiTests>
+            <generateApiDocumentation>false</generateApiDocumentation>
+            <auth>false</auth>
+        </configuration>
+        </execution>
+    </executions>
+</plugin>
+<!--maven helper plugin to add generated sources to maven project-->
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>build-helper-maven-plugin</artifactId>
+    <executions>
+        <execution>
+        <phase>generate-sources</phase>
+        <goals>
+            <goal>add-source</goal>
+        </goals>
+        <configuration>
+            <sources>
+            <source>${project.build.directory}/generated-sources/openapi/src/gen/java</source>
+            </sources>
+        </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+After running the canonical `./mvnw clean package` we should have:
+```bash
+➜  api-first-pet-store exa --tree target
+target
+├── [...]
+├── generated-sources
+│  ├── annotations
+│  └── openapi
+│     └── src
+│        └── gen
+│           └── java
+│              └── pro
+│                 └── robertopiva
+│                    ├── api
+│                    │  └── PetsApi.java
+│                    └── beans
+│                       ├── Error.java
+│                       ├── NewPet.java
+│                       ├── Pet.java
+│                       └── PetAllOf.java
+[...]
+```
+
+We can clearly see that the plugin generated beans and interfaces.
+
+What now? We implement those interfaces!
+
+On our `src/main/java` folder we can now implement `PetsApi` interface in our new class.
+
+See here a snippet:
+```java
+public class Pets implements PetsApi {
+
+    @Override
+    public Pet addPet(@Valid @NotNull NewPet newPet) {
+        return null;
+    }
+
+    @Override
+    public void deletePet(Long id) {
+    }
+
+    @Override
+    public Pet findPetById(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<Pet> findPets(List<String> tags, Integer limit) {
+        return null;
+    }
+}
+```
+As we can see, we can focus on the implementation rather than on the definitions.
+
 TODO:
-- maven snippet
+- in memory implementation
 - native compile?
 - sample db?
 
 # Concusions
+
+Some companies are organized so that API clients are automatically, and fully, generated from OpenAPI spec
 
 After all this is what an API is: the API is the product, the documentation and the formal definition is their User Interface, the error codes and mode of interactions are the User Experience.
