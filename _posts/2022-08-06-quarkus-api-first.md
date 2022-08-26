@@ -165,7 +165,7 @@ As we can see, with the interface being already set in generation, we can focus 
 
 You can see a quick in-memory implementation of PetsApi at https://github.com/civitz/quarkus-api-first/blob/main/src/main/java/pro/robertopiva/api/Pets.java 
 
-## Changin the API
+## Changing the API
 
 Another benefit of the API-first approach is that to change the API we need to first change it's documentation, i.e. the OpenAPI spec.
 
