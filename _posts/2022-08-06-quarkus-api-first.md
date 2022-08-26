@@ -24,6 +24,7 @@ Suppose we have already defined an API in the form of OpenAPI. For simplicity an
 We have multiple options here:
 - if we are designing a server for a fixed API we may want to generate the project skeleton once and probably edit the generated files directly
 - if on the other hand we are currenty developing the API itself or we want to promptly fail the build when we change the API, we should generate only standard beans and service interfaces.
+
 What we will do for this example is the latter approach, and we will use two handy tools:
 - OpenAPI official Java code generator tool and maven plugin
 - quarkus framework for developing fast cloud-native applications
@@ -32,16 +33,16 @@ Let's start!
 
 First, we assume we have the quarkus cli installed (use the great [SDKMAN!](https://sdkman.io/) if you want an easy install) and we start with a 
 ```bash
-quarkus create app pro.robertopiva:api-first-pet-store \
+$ quarkus create app pro.robertopiva:api-first-pet-store \
     --extension=resteasy-reactive-jackson,hibernate-validator
-cd api-first-pet-store
+$ cd api-first-pet-store
 ```
 You can then remove the sample code and tests since we will replace them with generated code.
-Then we want to download the OpenAAPI spec for ease of use.
+Then we want to download the OpenAPI spec for ease of use.
 ```bash
-curl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore-expanded.json -o petstore.openapi.json
+$ curl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore-expanded.json -o petstore.openapi.json
 ## for a fancier version:
-curl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore-expanded.json | jq > petstore.openapi.json
+$ curl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore-expanded.json | jq > petstore.openapi.json
 ```
 And now we need a way to generate the rest interfaces and the java beans, so we configure the [OpenAPI maven generator plugin](https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin). The plugin itself is very general, and can be used in a variety of contexts. Generator classes are all listed in [https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages](https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages) and configuration variables are also listed in [https://openapi-generator.tech/docs/generators/java](https://openapi-generator.tech/docs/generators/java).
 
@@ -108,7 +109,7 @@ The corresponding maven plugin XML is written below:
 
 After running the canonical `./mvnw clean package` we should have:
 ```bash
-➜  api-first-pet-store exa --tree target
+$ exa --tree target
 target
 ├── [...]
 ├── generated-sources
