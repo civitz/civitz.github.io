@@ -20,7 +20,7 @@ But how do we do it? Let's see what tools we have in the Java world.
 
 ## API-first quarkus server
 
-Suppose we have already defined an API in the form of OpenAPI. For simplicity and ease of comparison, we use the classic example: the pet store. We gather the OpenAPI specification from their [OpenAPI sample catalog](https://github.com/OAI/OpenAPI-Specification/tree/main/examples/v3.0) ([direct link to OpenAPI spec](https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json), and then we need to generate the base code for our server.
+Suppose we have already defined an API in the form of OpenAPI. For simplicity and ease of comparison, we use the classic example: the pet store. We gather the OpenAPI specification from their [OpenAPI sample catalog](https://github.com/OAI/OpenAPI-Specification/tree/main/examples/v3.0) ([direct link to OpenAPI spec](https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json)), and then we need to generate the base code for our server.
 We have multiple options here:
 - if we are designing a server for a fixed API we may want to generate the project skeleton once and probably edit the generated files directly
 - if on the other hand we are currenty developing the API itself or we want to promptly fail the build when we change the API, we should generate only standard beans and service interfaces.
