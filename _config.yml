@@ -11,7 +11,6 @@ email: piva.roberto.88@gmail.com
 description: Software and more.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://www.robertopiva.pro # the base hostname & protocol for your site
-twitter_username: il_civitz
 github_username: civitz
 mastodon_url: https://mastodon.uno/@civitz
 mastodon_handle: '@civitz@mastodon.uno'
