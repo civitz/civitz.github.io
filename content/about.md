@@ -3,9 +3,11 @@ title: About Me
 url: /about/
 ---
 
+<div class="about-card">
+
 ![](/images/civitz.jpg)
 
-I'm a software engineer from Padova, Italy.
+<div class="about-info">
 
 ### Curriculum
 
@@ -16,3 +18,8 @@ I'm a software engineer from Padova, Italy.
 ### Contact me
 
 [piva.roberto.88@gmail.com](mailto:piva.roberto.88@gmail.com)
+
+</div>
+</div>
+
+I'm a software engineer from Padova, Italy.

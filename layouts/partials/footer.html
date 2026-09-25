@@ -1,39 +1,17 @@
 <footer class="site-footer">
-
   <div class="wrapper">
-
-    <h2 class="footer-heading small-site-title">{{ site.Title }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list footer-content">
-          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
-          <li>Made with <i class="fa fa-heart"></i> and <a href="https://gohugo.io"><span style="color:black">Hugo</span></a></li>
-
-
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2 footer-content">
-        <ul class="social-media-list">
-          {{- with site.Params.github_username }}
-          <li>
-            {{ partial "icon-github.html" . }}
-          </li>
-          {{- end }}
-          {{- with site.Params.mastodon_url }}
-          <li>
-            {{ partial "icon-mastodon.html" (dict "url" . "handle" site.Params.mastodon_handle) }}
-          </li>
-          {{- end }}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3 site-description">
-        <p>{{ site.Params.description }}</p>
-      </div>
-    </div>
-
+    &copy; {{ now.Year }} {{ site.Title }}
+    {{- with site.Params.description }}
+    <span class="sep">&middot;</span><span class="motto">{{ . }}</span>
+    {{- end }}
+    {{- with site.Params.github_username }}
+    <span class="sep">&middot;</span><a rel="me" href="https://github.com/{{ . }}">GitHub</a>
+    {{- end }}
+    {{- with site.Params.mastodon_url }}
+    <span class="sep">&middot;</span><a rel="me" href="{{ . }}">Mastodon</a>
+    {{- end }}
+    {{- with site.Home.OutputFormats.Get "rss" }}
+    <span class="sep">&middot;</span><a href="{{ .RelPermalink }}">RSS</a>
+    {{- end }}
   </div>
-
 </footer>
