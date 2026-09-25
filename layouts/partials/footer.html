@@ -1,6 +1,9 @@
 <footer class="site-footer">
   <div class="wrapper">
     &copy; {{ now.Year }} {{ site.Title }}
+    {{- with site.Params.description }}
+    <span class="sep">&middot;</span><span class="motto">{{ . }}</span>
+    {{- end }}
     {{- with site.Params.github_username }}
     <span class="sep">&middot;</span><a rel="me" href="https://github.com/{{ . }}">GitHub</a>
     {{- end }}

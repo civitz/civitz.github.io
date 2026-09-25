@@ -7,6 +7,9 @@
       {{- end }}
     </div>
     <nav class="site-nav">
+      {{- if not .IsHome }}
+      <a href="{{ "/" | relURL }}">Home</a>
+      {{- end }}
       {{- range site.Menus.main }}
       <a href="{{ .URL | relURL }}">{{ .Name }}</a>
       {{- end }}
