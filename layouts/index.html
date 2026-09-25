@@ -1,23 +1,12 @@
 {{ define "main" }}
-<div class="home">
-
-  {{ range where site.RegularPages "Section" "posts" }}
-  {{- $words := findRE `\S+` .Plain }}
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}" itemprop="datePublished">{{ .Date.Format "Jan 2, 2006" }}</time>
-    </div>
-    <div class="postDay">
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="{{ partial "clean-url.html" .RelPermalink }}">{{ .Title }}</a>
-    </div>
-    <div class="postExt">
-   {{ delimit (first 20 $words) " " }}{{ if gt (len $words) 20 }}...{{ end }}
-    </div>
-  </div>
-
-  {{ end }}
-
-</div>
+<ul class="post-list centered">
+  {{- range where site.RegularPages "Section" "posts" }}
+  {{- $words := findRE `\S+` (.Plain | htmlUnescape) }}
+  <li>
+    <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+    <a class="post-link" href="{{ partial "clean-url.html" .RelPermalink }}">{{ .Title }}</a>
+    <p class="post-excerpt">{{ delimit (first 20 $words) " " }}{{ if gt (len $words) 20 }}&hellip;{{ end }}</p>
+  </li>
+  {{- end }}
+</ul>
 {{ end }}

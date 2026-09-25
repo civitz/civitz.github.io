@@ -2,22 +2,16 @@
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="{{ partial "clean-url.html" .RelPermalink }}">{{ .Title }}</a></h1>
-  <center>  <p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}" itemprop="datePublished">{{ .Date.Format "Jan 2, 2006" }}</time></p>
+    <h1 itemprop="name headline">{{ .Title }}</h1>
+    <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}" itemprop="datePublished">{{ .Date.Format "Jan 2, 2006" }}</time>
     {{- with .Params.author }}
-     <div class="">
-       <center><p ><strong><span class="authorKeyword">Author</span><span class="small-site-title"> <h2 style="letter-spacing: 3px !important;
-       text-transform: uppercase !important;">{{ . }}</h2></span></strong></p></center>
-
-     </div>
+    <span class="post-date" itemprop="author">by {{ . }}</span>
     {{- end }}
-   </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     {{ .Content }}
   </div>
-
 
 </article>
 {{ end }}

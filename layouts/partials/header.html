@@ -1,15 +1,15 @@
-<div class="wrapper">
-  <center> <a href="{{ "/" | relURL }}"><div class="site-title">   {{ site.Title }} </div></a></center>
-</div>
-<div class="wrapper site-description">
-<center>  {{ site.Params.description }} </center>
-</div>
-<div class="wrapper">
-  <div class="trigger site-navigation">
-    <a class="page-link" href="{{ "/" | relURL }}">HOME</a><span class="exclamationMark">/</span>
-    {{- range site.Menus.main }}
-
-    <a class="page-link" href="{{ .URL | relURL }}">{{ .Name }}</a><span class="exclamationMark">/</span>
-    {{- end }}
+<header class="site-header">
+  <div class="wrapper">
+    <div class="site-brand">
+      <a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+      {{- with site.Params.description }}
+      <p class="site-description">{{ . }}</p>
+      {{- end }}
+    </div>
+    <nav class="site-nav">
+      {{- range site.Menus.main }}
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{- end }}
+    </nav>
   </div>
-</div>
+</header>

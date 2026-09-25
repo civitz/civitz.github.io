@@ -1,14 +1,12 @@
 {{ define "main" }}
-<article class="post">
+<article class="page {{ .File.ContentBaseName }}">
 
   <header class="post-header">
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.tagline }}
+    <p class="page-tagline">{{ . }}</p>
+    {{- end }}
   </header>
-
-  {{- with .Params.tagline }}
-  <div class="tagline">
-  <span class="page-title">{{ $.Title }}</span> <span class="page-tagline"><em>{{ . }}</em></span>
-  </div>
-  {{- end }}
 
   <div class="post-content">
     {{ .Content }}
