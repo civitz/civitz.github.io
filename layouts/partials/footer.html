@@ -1,0 +1,39 @@
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">{{ site.Title }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> and <a href="https://gohugo.io"><span style="color:black">Hugo</span></a></li>
+
+
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          {{- with site.Params.github_username }}
+          <li>
+            {{ partial "icon-github.html" . }}
+          </li>
+          {{- end }}
+          {{- with site.Params.mastodon_url }}
+          <li>
+            {{ partial "icon-mastodon.html" (dict "url" . "handle" site.Params.mastodon_handle) }}
+          </li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>{{ site.Params.description }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>

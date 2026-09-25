@@ -1,0 +1,47 @@
+baseURL = "https://www.robertopiva.pro/"
+title = "Roberto Piva"
+languageCode = "en"
+
+# Keep URLs identical to the old Jekyll site: case-preserving slugs,
+# /YYYY/MM/DD/slug.html for posts, no tag pages, feed at /feed.xml.
+disablePathToLower = true
+disableKinds = ["taxonomy", "term"]
+uglyURLs = true
+
+[params]
+  description = "Software and more."
+  email = "piva.roberto.88@gmail.com"
+  github_username = "civitz"
+  mastodon_url = "https://mastodon.uno/@civitz"
+  mastodon_handle = "@civitz@mastodon.uno"
+
+[frontmatter]
+  # Date and slug are taken from the YYYY-MM-DD-slug.md filename, like Jekyll.
+  date = [":filename", ":default"]
+
+[permalinks]
+  posts = "/:year/:month/:day/:slug"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+  page = ["HTML"]
+
+[outputFormats.RSS]
+  baseName = "feed"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+
+[[menus.main]]
+  name = "About Me"
+  url = "/about/"
+  weight = 1
+
+[[menus.main]]
+  name = "Bookmarks"
+  url = "/bookmarks/"
+  weight = 2

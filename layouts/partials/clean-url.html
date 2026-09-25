@@ -1,0 +1,8 @@
+{{- /* Posts are written as slug.html, but linked without the extension
+       (Netlify serves /slug from slug.html), matching the old site.
+       hugo server can't do that lookup, so keep .html when serving locally. */ -}}
+{{- $url := . -}}
+{{- if not hugo.IsServer -}}
+  {{- $url = strings.TrimSuffix ".html" $url -}}
+{{- end -}}
+{{- return $url -}}
