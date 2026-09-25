@@ -1,0 +1,7 @@
+{{- $dest := .Destination -}}
+{{- if hasPrefix $dest "/" -}}
+  {{- $dest = partial "clean-url.html" $dest -}}
+{{- end -}}
+{{- /* printf + safeHTMLAttr keeps the URL byte-identical (no %-encoding by html/template) */ -}}
+<a {{ printf "href=\"%s\"" ($dest | htmlEscape) | safeHTMLAttr }}{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /* chomp trailing newline */ -}}

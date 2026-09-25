@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="home">
+    {{- range .Pages.ByDate.Reverse }}
+    <div class="post postContent">
+        <div class="postTitle">
+            <a class='postLink' href="{{ .Params.link }}">{{ with .Params.short }}{{ . }} | {{ end }}{{ .Params.link | truncate 40 }}</a>
+        </div>
+        <div class="postExt">
+            {{ .Plain }}
+        </div>
+    </div>
+    {{- end }}
+</div>
+{{ end }}

@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="post">
+
+  <header class="post-header">
+  </header>
+
+  {{- with .Params.tagline }}
+  <div class="tagline">
+  <span class="page-title">{{ $.Title }}</span> <span class="page-tagline"><em>{{ . }}</em></span>
+  </div>
+  {{- end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+</article>
+{{ end }}
