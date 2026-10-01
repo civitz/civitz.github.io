@@ -20,7 +20,7 @@ Additionally, i wanted:
 - automatically deploy pull requests to a beta deployment
 - automatically deploy tag on main to production deployment (well, as production as a private service may be)
 
-The guide in forejo tells you to add a runner as part of the [forgejo server's docker compose](https://forgejo.org/docs/latest/admin/actions/installation/docker/), but i needed a way to move the runner to a separate VM in the future, so I created a separate docker compose file.
+The guide in forgejo tells you to add a runner as part of the [forgejo server's docker compose](https://forgejo.org/docs/latest/admin/actions/installation/docker/), but i needed a way to move the runner to a separate VM in the future, so I created a separate docker compose file.
 
 So i followed the guide but with some variations.
 Here is the docker compose, commented wherever necessary:
