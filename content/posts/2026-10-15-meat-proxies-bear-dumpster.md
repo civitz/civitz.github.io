@@ -1,6 +1,5 @@
 ---
 title: Meat proxies, and the bear dumpster dilemma
-draft: true
 ---
 
 In this agentic AI era, software development is no longer a safe bet for a young person looking for a career.
